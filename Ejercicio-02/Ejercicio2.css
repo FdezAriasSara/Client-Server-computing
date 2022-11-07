@@ -1,0 +1,31 @@
+/**********************
+  Sara Fernández Arias - UO269546
+  Estilos aplicados en el docummento Ejercicio2.html
+**********************/
+/*Especificidad: 001*/
+body {
+    font-family: Tahoma, sans-serif;
+    color: #F4EBEE;
+    background-color:#653E4E ;
+    }
+  /*Especificidad: 001*/
+  h1,h2,h3,h4 {
+    color:#2B1834 ;    
+    background-color:#CBA4B2; 
+    text-transform: uppercase;
+    padding: 2em; 
+    font-style: oblique;
+}
+/*Especificidad: 001*/
+ h1{
+        font-size: 4em;
+}
+
+
+/*Especificidad: 001*/
+p{
+    font-size: 1.3em;
+   
+    
+}
+

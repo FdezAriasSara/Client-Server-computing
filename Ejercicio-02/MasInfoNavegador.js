@@ -1,0 +1,1 @@
+document.write("Se emplea el agente de usuario "+navegador.agenteDeUsuario+" . El navegador está en su versión "+navegador.version+" proporcionada por "+navegador.vendor+". ¿Se ha activado Java?"+navegador.java+". La plataforma es "+navegador.plataforma);
