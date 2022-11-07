@@ -1,0 +1,3 @@
+document.write("<p>Esta asignatura se imparte en el curso  "+asignatura.curso+" del grado.<p>");
+document.write("<p>La alumna que lo cursa y que escribe este párrafo se llama  "+asignatura.nombre_estudiante+" .<p>");
+document.write("<p>Si quiere contactar con ella , escriba a la siguiente dirección de correo corporativo : "+asignatura.email_estudiante+". Recibirá respuesta con la mayor inmediatez posible.<p>");
