@@ -1,0 +1,106 @@
+/**********************
+  Sara Fernández Arias - UO269546
+  En este documento , se detalla la disposición de los diferentes elementos estructurales de la calculadora básica. 
+  En este, se indica su posicionamiento visual en la página.
+  Por lo general, en este documento se usarán medidas relativas al viewport,
+  descritas en CSS Values and Units Module Level 3, apartado 5.1.2
+  **********************/
+
+label{
+  grid-column:1/6;
+  /*Hace que ocupe de la columna 1 a la 6 (en este caso, todas las columnas)*/
+  color:#E4A4E5;
+  font-style:italic;
+
+}
+/**Especificidad: 011 **/
+input[type="text"]{
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  grid-column: 1 / 6;
+  grid-row: 1 / 3;
+  font-size: 3.5vw; 
+  text-align: right;
+  padding:3vw;
+  margin:1.2vw;
+  grid-column: span 5;
+  grid-row: span 2;
+  background-color: #BECED0;
+  color:#1A1A1A;
+  border-color: #D0DCDC;
+  border-style: ridge;
+  border-width: 0.3em;
+}
+/**Especificidad: 011 **/
+input[type="button"]{
+  font-size: 1.2em;
+  padding:0.3vh;
+  margin:0.7vh;
+  color:#000000;
+  background-color:#FFFFFF;
+  border-radius:  1.2vw;
+  border-color: #F5F5F5;
+  border-width: 0.9em;
+}
+/**Especificidad: 021 **/
+input[type="button"]:nth-of-type(-n+6)
+{ 
+
+  font-style:bold;
+  border-color: #E4A4E5;
+  color:#F4B8E1;
+  background-color:#2E323D;
+  border-width:0.9em;
+  border-radius:  5vw;
+}
+/**/
+input[name="="]{
+  background-color: #EDF4B8;
+  border-color: #E8F09E;
+}
+
+/**Especificidad: 011 **/
+input[name="suma"]{
+  grid-row: span 2;
+  background-color: #f1d6c0;
+  border-color:#EBC7A8;
+  
+
+}
+
+
+/**Especificidad: 011 **/
+input[name="mrc"],input[name="mrestar"],input[name="msumar"]{
+
+  background-color: #C7D8F9;
+ 
+  border-color: #A9C2F4;
+
+}
+/**Especificidad: 011 **/
+input[name="."],input[name="multiplicacion"],input[name="division"],input[name="resta"]{
+
+  background-color: #D9F4B8;
+ 
+  border-color: #C9EF9A;
+
+}
+
+/**Especificidad: 001 **/
+form {
+    
+    display:grid; 
+    border-radius:  1.2vw;
+    background-color: #2E323D; 
+    grid-template-columns:repeat(5, 1fr);
+    /*Hace que la malla tenga 5 columnas de un frame*/
+   
+  padding:2vw;
+}
+/**Especificidad: 001 **/ 
+body{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+}
