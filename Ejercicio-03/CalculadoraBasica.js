@@ -1,12 +1,12 @@
 "use strict";
-const PUNTO='.'
+const PUNTO = '.'
 class CalculadoraBasica {
 
     constructor() {
         this.pantalla = ' ';
         this.memoria = 0;
-        this.operando1 = 0;
-        this.operando2 = 0;
+        this.operando1 = null;
+        this.operando2 = null;
         this.operacion = "";
 
     }
@@ -22,17 +22,23 @@ class CalculadoraBasica {
     }
     decimales() {
         this.quitarSimboloDecimales();
-        this.pantalla += ".";
-        this.actualizarPantalla();
+   
+        if(!this.pantalla.includes(".")){
+            this.pantalla += ".";
+            this.actualizarPantalla();
+        }
+ 
     }
     /*En caso de que tras introducir una punto se presione el simbolo de una operación, se borrará automáticamente*/
     quitarSimboloDecimales(simbolo) {
-        if(this.pantalla.length>0){
-            if (this.pantalla[-1] === simbolo) {
+        if (this.pantalla.length > 0) {
+            //TODOOOOOOOOOOOOOOOOOOOOOO
+            console.log(this.pantalla.charAt(-1))
+            if (this.pantalla.charAt(-1)=== simbolo) {
                 this.borrarUltimoDigito();
             }
         }
-       
+
     }
 
     suma() {
@@ -50,8 +56,8 @@ class CalculadoraBasica {
 
     }
     multiplicacion() {
-        this.quitarSimboloDecimales(PUNTO);
-        this.asignarOperandos();
+        this.quitarSimboloDecimales(PUNTO);       
+        this.asignarOperandos();     
         this.ejecutarCalculos();
         this.operacion = '*';
 
@@ -67,8 +73,8 @@ class CalculadoraBasica {
         this.quitarSimboloDecimales(PUNTO);
         this.pantalla = this.memoria;
         this.actualizarPantalla();
-        this.operando1 = 0;
-        this.operando2 = 0;
+        this.operando1 = null;
+        this.operando2 = null;
     }
     restarMemoria() {
         this.quitarSimboloDecimales(PUNTO);
@@ -99,15 +105,16 @@ class CalculadoraBasica {
 
     }
     borrarUltimoDigito() {
-        this.pantalla=this.pantalla.slice(0,-1)
+        this.pantalla = this.pantalla.slice(0, -1)
         this.actualizarPantalla();
     }
     igual() {
         this.quitarSimboloDecimales(PUNTO);
         this.actualizarPantalla();
+        this.asignarOperandos();
         this.ejecutarCalculos();
-        this.operando1=0;
-        this.operando2=0;
+        this.operando1 = null;
+        this.operando2 = null;
     }
     porcentaje() {
         this.quitarSimboloDecimales(PUNTO);
@@ -138,7 +145,7 @@ class CalculadoraBasica {
         this.ejecutarCalculos();
     }
     asignarOperandoUnarias() {
-        //Evitar que se devuelva siempre 0 en caso de que se realicen llamadas sucesivas.                                                             
+       //Si la pantalla está vacía no asigno operandos, ya que Number( ) devuelve 0, produciendo resultados erróneos en operaciones como la multiplicación                                                             
         if (this.pantalla != " ") {
             this.operando1 = Number(this.pantalla);
         } else {
@@ -147,36 +154,58 @@ class CalculadoraBasica {
     }
     asignarOperandos() {
         
-        if (this.operando1 !== 0 && this.operando2 == 0) {
-            this.operando2 = Number(this.pantalla);
-        } else {
-            this.operando1 = Number(this.pantalla);
+        if(this.pantalla!=" " ){
+            //Si la pantalla está vacía no asigno operandos, ya que Number( ) devuelve 0, produciendo resultados erróneos en operaciones como la multiplicación 
+            if ( this.operando1 !== null && this.operando2 === null) {
+            
+                this.operando2 = Number(this.pantalla);
+            } else {
+               
+                this.operando1 = Number(this.pantalla);
+            }
         }
+       
     }
     ejecutarCalculos() {
 
         switch (this.operacion) {
             case "*":
-                this.#operacionSimple();
-                this.operando2 = Number(1);
+                this.#operandoNeutro(Number(1))
+                this.#operacionSimple();            
+                this.operando2 = null;
                 break;
             case "+":
-                this.#operacionSimple();
-                this.operando2 = Number(0);
+                this.#operandoNeutro(Number(0))
+                this.#operacionSimple(); 
+                this.operando2 = null;
                 break;
             case "/":
-                this.#operacionSimple();
-                this.operando2 = Number(1);
+                this.#operandoNeutro(Number(1))
+                this.#operacionSimple();             
+                this.operando2 = null;
                 break;
             case "-":
+                this.#operandoNeutro(Number(0))
                 this.#operacionSimple();
-                this.operando2 = Number(0);
+                this.operando2 = null;
                 break;
 
         }
         this.actualizarPantalla();
         this.pantalla = " ";
 
+    }
+    /**
+     * En caso de que el segundo operando sea null a la hora de llamar a ejecutar cálculos, 
+     * se le asigna un número que no modifique el actual operando1.
+     * En caso de sumas y restas, será 0.
+     * En caso de multiplicaciones y divisiones , 1.
+     * @param {*} neutro 
+     */
+    #operandoNeutro(neutro){
+        if(this.operando2===null){
+            this.operando2=neutro;
+        }
     }
 
     #operacionSimple() {
@@ -186,9 +215,7 @@ class CalculadoraBasica {
             this.pantalla = eval(this.operando1 + this.operacion + this.operando2);
             this.memoria = Number(this.pantalla);
             this.operando1 = this.memoria;
-
-
-
+           
         }
         catch (err) {
             console.log(err)
@@ -198,4 +225,4 @@ class CalculadoraBasica {
     }
 
 }
-var calculadora=new CalculadoraBasica();
+var calculadora = new CalculadoraBasica();
