@@ -1,4 +1,4 @@
-"use strict";
+"use strict";//esta directiva es de ámbito global al documento
 const ERROR="ERROR";
 const PUNTO = '.'
 const VACIO=" "
@@ -9,7 +9,7 @@ class CalculadoraBasica {
         this.memoria = Number(0);
         this.operando1 = null;
         this.operando2 = null;
-        this.operacion = "";
+        this.operacion =VACIO;
         this.resultado=Number(0);
 
     }
@@ -57,9 +57,11 @@ class CalculadoraBasica {
 
     }
     multiplicacion() {
+        console.log("MULTI :OPERANDO1:" +this.operando1 +" OP2:"+this.operando2)
         this.quitarSimboloDecimales(PUNTO);       
         this.asignarOperandos();     
         this.ejecutarOperaciónBasica();
+        console.log("MULTI :OPERANDO1:" +this.operando1 +" OP2:"+this.operando2)
         this.operacion = '*';
 
     }
@@ -96,7 +98,7 @@ class CalculadoraBasica {
 
     }
 
-    borrar() {
+    reiniciar() {
 
         this.pantalla = VACIO;
         this.actualizarPantalla();
@@ -264,6 +266,23 @@ class CalculadoraCientifica extends CalculadoraBasica {
         super()
         this.shiftIsPressed = false;
     }
+    /**
+     * En memoria empleo 0 , ya que es el elemento neutro de las operaciones que sealizan con ella por defecto.
+     */
+    borrarMemoria(){
+        this.memoria=Number(0)
+        this.#shiftBotonesMemoria();
+
+    }
+    #shiftBotonesMemoria(){
+        var estado=(this.memoria===Number(0))
+        document.formulario.mc.disabled=estado;
+        document.formulario.mr.disabled=estado;
+    }
+    almacenarEnMemoria(){
+        this.memoria=Number(this.pantalla)
+        this.#shiftBotonesMemoria();
+    }
     mostrarPi() {
 
         this.ejecutarOperaciónBasica();
@@ -271,28 +290,45 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.actualizarPantalla();
 
     }
-    borrarDigito() {
-        this.borrarUltimoDigito();
-    }
+ 
     factorial() {
-        this.quitarSimboloDecimales(COMA);
-        this.ejecutarOperaciónBasica();
-        this.asignarOperandoUnarias();
-        this.resultado= math.factorial(this.operando1);
+        console.log("OPERANDO1:" +this.operando1 +" OP2:"+this.operando2)
+        this.quitarSimboloDecimales(COMA);      
+        this.ejecutarOperaciónBasica();    
+        this.asignarOperandoUnarias();    
+        this.#fact();
+        console.log("OPERANDO1:" +this.operando1 +" OP2:"+this.operando2)
         this.procesarResultado();
+   
+    }
+    #fact(){
+        this.resultado=Number(1);
+        var operando=Number(1);
+        while(operando<=this.operando1){
+            this.resultado*=Number(operando)
+            operando++;
+        }
+       
     }
     seno() {
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
-        this.asignarOperandoUnarias();
-      
-        this.shiftIsPressed ? this.resultado= Math.asin(this.operando1) : resultado = Math.sin(this.operando1);
+        this.asignarOperandoUnarias();      
+        this.shiftIsPressed ? this.resultado= Math.asin(this.operando1) :  this.resultado= Math.sin(this.operando1);
         this.procesarResultado();
 
     }
    decimales() {
         this.pantalla += ",";
         this.actualizarPantalla();
+    }
+    cuadrado() {
+        
+        this.quitarSimboloDecimales(COMA);
+        this.asignarOperandoUnarias();
+        this.operando2=Number(2)
+        this.resultado = Math.pow(this.operando1, this.operando2);
+        this.procesarResultado();
     }
     potenciaDeXBase10() {
         
@@ -303,7 +339,7 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.procesarResultado();
     }
     potenciaDeXBaseY() {
-        console.log("operando 1 :"+this.operando1+" operando2:"+this.operador2)
+       
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
         this.asignarOperandoUnarias();
@@ -314,7 +350,7 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
         this.asignarOperandoUnarias();
-        this.shiftIsPressed ? this.resultado = Math.acos(this.operando1) : resultado = Math.cos(this.operando1);
+        this.shiftIsPressed ? this.resultado = Math.acos(this.operando1) : this.resultado = Math.cos(this.operando1);
         this.procesarResultado();
     }
     tangente() {

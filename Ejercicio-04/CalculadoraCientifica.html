@@ -26,8 +26,8 @@
          <input type="button" value="HYP" onclick=" calculadoraCientifica.hyp( )" id="hyp" name="hyp">
          <input type="button" value="F-E" onclick=" calculadoraCientifica.fe( )" id="fe" name="fe">
         <!--Memoria-->
-        <input type="button" value="MC" onclick=" calculadoraCientifica.borrarMemoria()" id="mc" name="mc">
-        <input type="button" value="MR" onclick=" calculadoraCientifica.recuperarMemoria()" id="mr" name="mr">
+        <input type="button" value="MC" onclick=" calculadoraCientifica.borrarMemoria()" id="mc" name="mc" disabled>
+        <input type="button" value="MR" onclick=" calculadoraCientifica.recuperarMemoria()" id="mr" name="mr"  disabled>
         <input type="button" value="M-" onclick=" calculadoraCientifica.restarMemoria()" id="mr" name="mrestar">
         <input type="button" value="M+" onclick=" calculadoraCientifica.sumarMemoria()" id="ms" name="msumar">
         <input type="button" value="MS" onclick=" calculadoraCientifica.almacenarEnMemoria()" id="ms" name="ms"> 
@@ -47,7 +47,7 @@
          <!--Tercera fila-->
         <input type="button" value="&#8593" onclick="calculadoraCientifica.shift()" id="shift" name="shift">
         <input type="button" value="CE" onclick=" calculadoraCientifica.borrarError( )" id="ce" name="ce">
-        <input type="button" value="C" onclick="calculadoraCientifica.borrar()" id="c" name="c">
+        <input type="button" value="C" onclick="calculadoraCientifica.reiniciar()" id="c" name="c">
         <input type="button" value="&#8656" onclick=" calculadoraCientifica.borrarUltimoDigito()" id="borrarDigito" name="borrarDigito">
         <input type="button" value="&#247" onclick=" calculadoraCientifica.division()" id="div" name="division">
         <!--Cuarta fila-->

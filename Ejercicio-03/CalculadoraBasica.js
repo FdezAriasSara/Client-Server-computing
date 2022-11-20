@@ -96,7 +96,7 @@ class CalculadoraBasica {
 
     }
 
-    borrar() {
+    reiniciar() {
 
         this.pantalla = VACIO;
         this.actualizarPantalla();
@@ -153,7 +153,7 @@ class CalculadoraBasica {
     }
     asignarOperandoUnarias() {
        //Si la pantalla está vacía no asigno operandos, ya que Number( ) devuelve 0, produciendo resultados erróneos en operaciones como la multiplicación                                                             
-        if (this.pantalla !=  VACIO) {
+        if (this.pantalla !==  VACIO) {
             this.operando1 = Number(this.pantalla);
         } else {
             this.operando1 = this.memoria;
