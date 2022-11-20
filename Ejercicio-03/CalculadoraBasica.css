@@ -13,6 +13,7 @@ label{
   font-style:italic;
 
 }
+
 /**Especificidad: 011 **/
 input[type="text"]{
   font-family: 'Courier New', monospace;
