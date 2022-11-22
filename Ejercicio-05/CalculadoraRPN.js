@@ -1,6 +1,6 @@
 "use strict";
 const VACIO = ""
-const ERROR="ERROR"
+const ERROR = "ERROR"
 class CalculadoraRPN {
 
     constructor() {
@@ -19,30 +19,34 @@ class CalculadoraRPN {
         document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
     }
 
-
-
-     /**
-     * Método que introduce un operando a la pila y actualiza la representación visual de la misma.
-     */
-      pushOperando(operando) {
-        document.querySelector('textArea[name="pilaOperandos"]').value= VACIO;//vaciamos el area del número que está siendo introducido porque se ha seleccionado enter.
+    /**
+    * Método que introduce un operando a la pila y actualiza la representación visual de la misma.
+    */
+    pushOperando(operando) {
+        document.querySelector('textArea[name="pilaOperandos"]').value = VACIO;//vaciamos el area del número que está siendo introducido porque se ha seleccionado enter.
         if (isNaN(operando)) {
             document.querySelector('textArea[name="pilaOperandos"]').value = ERROR;
         } else {
-            var gap = ":      "
-            this.pilaOperandos.push(Number(operando));//convertimos el numero introducido a number y lo metemos en la pila de operadores.
-            for (let index = this.pilaOperandos.length - 1; index >= 0; index--) {
-                var currentIndex = index + 1;
-                if (currentIndex > 9) {
-                    gap = ":  "
-                }
-                document.querySelector('textArea[name="pilaOperandos"]').value += currentIndex + gap + this.pilaOperandos[index] + "\n";
 
-            }
+            this.pilaOperandos.push(Number(operando));//convertimos el numero introducido a number y lo metemos en la pila de operadores.
+            this.actualizarPila();
             this.memoria = operando;
         }
 
 
+    }
+    actualizarPila() {
+        document.querySelector('textArea[name="pilaOperandos"]').value=VACIO;
+        var gap = ":      "
+
+        for (let index = this.pilaOperandos.length - 1; index >= 0; index--) {
+            var currentIndex = index + 1;
+            if (currentIndex > 9) {
+                gap = ":  "
+            }
+            document.querySelector('textArea[name="pilaOperandos"]').value += currentIndex + gap + this.pilaOperandos[index] + "\n";
+
+        }
     }
 
     suma() {
@@ -120,11 +124,6 @@ class CalculadoraRPN {
         this.shiftIsPressed ? this.resultado = Math.atan(this.operando1) : this.resultado = Math.tan(this.operando1);
         this.pushOperando(this.resultado);
     }
-    modulo(){
-        this.asignarOperandos();
-        this.resultado=this.operando1%this.operando2;
-        this.pushOperando(this.resultado);
-    }
     borrarMemoria() {
         this.memoria = Number(0);
         this.#shiftBotonesMemoria();
@@ -135,11 +134,11 @@ class CalculadoraRPN {
         document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
 
     }
-    borrarError(){
-        this.operandoActual = VACIO;
-        document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
+    borrarError() {
+       this.pilaOperandos.pop();
+       this.actualizarPila();
     }
-    reiniciar(){
+    reiniciar() {
         this.pilaOperandos = new Array();
         this.memoria = Number(0);
         this.operando2 = null;
@@ -147,7 +146,7 @@ class CalculadoraRPN {
         this.resultado = null;
         this.operandoActual = VACIO;
         this.shiftIsPressed = false;
-        
+
     }
     recuperarMemoria() {
         this.pilaOperandos = new Array()
@@ -174,9 +173,9 @@ class CalculadoraRPN {
     }
     #shiftBotonesMemoria() {
         var estado = (this.memoria === Number(0))
-  
-        document.querySelector('input[name="mr"]').disabled=estado;
-        document.querySelector('input[name="mc"]').disabled=estado;
+
+        document.querySelector('input[name="mr"]').disabled = estado;
+        document.querySelector('input[name="mc"]').disabled = estado;
     }
     asignarOperandos() {
 
@@ -206,13 +205,13 @@ class CalculadoraRPN {
         //En caso de que shift  esté presionado y se presione de nuevo(!(true)&true=false)
         this.shiftIsPressed = !(this.shiftIsPressed) & true;
         if (this.shiftIsPressed) {
-           document.querySelector('input[name="sin"]').value = "arcsin";
-           document.querySelector('input[name="cos"]').value= "arcos";
-           document.querySelector('input[name="tan"]').value = "arctan";
+            document.querySelector('input[name="sin"]').value = "arcsin";
+            document.querySelector('input[name="cos"]').valu = "arcos";
+            document.querySelector('input[name="tan"]').valu = "arctan";
         } else {
-           document.querySelector('input[name="sin"]').value = "sin";
-           document.querySelector('input[name="cos"]').value = "cos";
-           document.querySelector('input[name="tan"]').value= "tan";
+            document.querySelector('input[name="sin"]').value = "sin";
+            document.querySelector('input[name="cos"]').valu = "cos";
+            document.querySelector('input[name="tan"]').valu = "tan";
         }
 
     }
@@ -220,18 +219,18 @@ class CalculadoraRPN {
     procesarTeclas(event) {
 
         var keyPressed = event.key;
-        
+
         if (keyPressed !== VACIO) {
             if (Number.isInteger(Number(keyPressed)) && !event.shiftKey) {
 
                 this.digitos(Number(keyPressed))
-            } else if(event.shiftKey && event.ctrlKey){
+            } else if (event.shiftKey && event.ctrlKey) {
                 //Esta funcionalidad será la asociada a la tecla de ↑
                 //De esta forma, se podrá hacer uso de otros los eventos asociados a letras mayúsculas
                 //o símbolos que requieran de shift 
                 this.shift();
             }
-             else {
+            else {
 
                 switch (keyPressed) {
 
@@ -313,10 +312,7 @@ class CalculadoraRPN {
                     case "B":
                         this.borrarMemoria();
                         break;
-                    case "%":
-                        this.porcentaje();
-                        break;
-                    
+               
                     case "Enter":
                         this.enter();
                         break;

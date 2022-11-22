@@ -27,20 +27,26 @@ class CalculadoraRPN {
         if (isNaN(operando)) {
             document.querySelector('textArea[name="pilaOperandos"]').value = ERROR;
         } else {
-            var gap = ":      "
-            this.pilaOperandos.push(Number(operando));//convertimos el numero introducido a number y lo metemos en la pila de operadores.
-            for (let index = this.pilaOperandos.length - 1; index >= 0; index--) {
-                var currentIndex = index + 1;
-                if (currentIndex > 9) {
-                    gap = ":  "
-                }
-                document.querySelector('textArea[name="pilaOperandos"]').value += currentIndex + gap + this.pilaOperandos[index] + "\n";
 
-            }
+            this.pilaOperandos.push(Number(operando));//convertimos el numero introducido a number y lo metemos en la pila de operadores.
+            this.actualizarPila();
             this.memoria = operando;
         }
 
 
+    }
+    actualizarPila() {
+        document.querySelector('textArea[name="pilaOperandos"]').value = VACIO;
+        var gap = ":      "
+
+        for (let index = this.pilaOperandos.length - 1; index >= 0; index--) {
+            var currentIndex = index + 1;
+            if (currentIndex > 9) {
+                gap = ":  "
+            }
+            document.querySelector('textArea[name="pilaOperandos"]').value += currentIndex + gap + this.pilaOperandos[index] + "\n";
+
+        }
     }
 
     suma() {
@@ -129,9 +135,9 @@ class CalculadoraRPN {
 
     }
     borrarError() {
-        this.operandoActual = VACIO;
-        document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
-    }
+        this.pilaOperandos.pop();
+        this.actualizarPila();
+     }
     reiniciar() {
         this.pilaOperandos = new Array();
         this.memoria = Number(0);
@@ -306,9 +312,7 @@ class CalculadoraRPN {
                     case "B":
                         this.borrarMemoria();
                         break;
-                    case "%":
-                        this.porcentaje();
-                        break;
+
 
                     case "Enter":
                         this.enter();
@@ -333,26 +337,46 @@ class CalculadoraEspecializada extends CalculadoraRPN {
         this.baseActual = DECIMAL;
     }
     convertirA(baseResultado) {
+
         if (this.baseActual != DECIMAL) {
-            this.convertirADecimal(this.baseActual);
+            this.#convertirADecimalDesde(this.baseActual);
         }
+
         this.#convertirDeDecimalA(baseResultado)
-        this.#restringirTeclas(baseResultado);
+        this.baseActual = Number(baseResultado);
+        this.#restringirTeclas();
 
     }
-    #restringirTeclas(modo) {
-        switch (modo) {
+    #restringirTeclas() {
+        var pre='input[name="';
+  
+        switch (this.baseActual) {
             case BINARIA:
-
+       
                 document.querySelector('input[type="button"]').disabled = true;
-                document.querySelector('input[name="0"],input[name="1"],input[name="enter"]').disabled = false;
+                document.querySelector('input[name="0"]').disabled=false;
+                document.querySelector('input[name="1"]').disabled=false;
+              
+                document.querySelector('input[name="dec"]').disabled=false;
+                document.querySelector('input[name="hex"]').disabled=false;
+                document.querySelector('input[name="enter"]').disabled=false;
+               
 
                 break;
             case OCTAL:
                 document.querySelector('input[type="button"]').disabled = true;
                 //habilitamos los números del 0 al 7 y los botones de cambio de base y borrado.
-                document.querySelector('input[name="0"],input[name="1"],input[name="2"],input[name="3"],input[name="4"],input[name="5"],input[name="6"],input[name="7"]').disabled = false;
-                document.querySelector('input[name="ce"],input[name="c"],input[name="dec"],input[name="bin"],input[name="oct"],input[name="hex"]').disabled = false;
+          
+                for (let i = 0; i< 8;i++) {
+                   var selector=pre+i+'"]'                   
+                    document.querySelector(selector).disabled = false;
+                }
+
+            
+                document.querySelector('input[name="dec"]').disabled =false;
+                document.querySelector('input[name="bin"]').disabled =false;
+                document.querySelector('input[name="hex"]').disabled =false;
+                document.querySelector('input[name="enter"]').disabled =false;
 
 
                 break;
@@ -364,57 +388,77 @@ class CalculadoraEspecializada extends CalculadoraRPN {
             case HEXA:
                 document.querySelector('input[type="button"]').disabled = true;
                 //habilitamos los números del 0 al 9 y los botones de cambio de base y borrado.
-                document.querySelector('input[name="0"],input[name="1"],input[name="2"],input[name="3"],input[name="4"],input[name="5"],input[name="6"],input[name="7"],input[name="8"],input[name="9"]').disabled = false;
-                document.querySelector('input[name="ce"],input[name="c"],input[name="dec"],input[name="bin"],input[name="oct"],input[name="hex"]').disabled = false;
-                document.querySelector('input[name="A"],input[name="B"],input[name="C"],input[name="D"],input[name="E"],input[name="F"]').disabled = false;
+                for (let i = 0; i< 10;i++) {
+                    var selector=pre+i+'"]'                    
+                    document.querySelector(selector).disabled = false;
+                }
+                document.querySelector('input[name="dec"]').disabled =false;
+                document.querySelector('input[name="bin"]').disabled =false;
+                document.querySelector('input[name="oct"]').disabled =false;
+                document.querySelector('input[name="A"]').disabled =false;
+                document.querySelector('input[name="B"]').disabled =false;
+                document.querySelector('input[name="C"]').disabled =false;
+                document.querySelector('input[name="D"]').disabled =false;
+                document.querySelector('input[name="E"]').disabled =false;
+                document.querySelector('input[name="F"]').disabled =false;
+
                 break;
         }
+        document.querySelector('input[name="enter"]').disabled =false;
+        document.querySelector('input[name="ce"]').disabled =false;
+        document.querySelector('input[name="c"]').disabled =false;
     }
 
-    #convertirDeDecimalA(numero, baseResultado) {
-        var resto = 23;
-        var resultado = new Array();
-        do {
-            resto = numero % baseResultado;
-            numero = numero / baseResultado;
-            resultado.push(resto)
+    #convertirDeDecimalA(baseResultado) {
+     
 
-        } while (resto < baseResultado)
-        var numeroObtenido = VACIO;
-        for (var indice = resultado.length - 1; indice >= 0; indice--) {
-            numeroObtenido += resultado[indice];
+        for (var indice = 0; indice < this.pilaOperandos.length; indice++) {
+
+            var cociente = this.pilaOperandos[indice]
+            var resto;
+            var resultado = new Array();
+            do {
+
+                resto = cociente % baseResultado;
+                cociente = Math.floor(cociente / baseResultado);
+                resultado.push(String(resto))
+           
+            } while (cociente >= baseResultado)
+
+
+
+            var numeroObtenido = String(cociente);
+            for (var i = resultado.length - 1; i >= 0; i--) {
+                numeroObtenido += resultado[i];
+            }
+            this.pilaOperandos[indice] = Number(numeroObtenido)
+
+
+
         }
-        this.pushOperando(Number(numeroObtenido))
-
+        this.actualizarPila();
     }
-    convertirADecimalDesde(baseOrigen) {
-        for (var indice = 0; indice < this.pilaOperandos.length; indice += 2) {
-            const element = array[index];
+    #convertirADecimalDesde(baseOrigen) {
 
-        }
-    }
-    convertirADecimal() {
-        /**
-        //TODO: ESTE METODO TENDRÍA Q RECIBIR  UN PARAMETRO DE BASE SI QUEREMOS PODER USARLO EN CONVERTIR A OTRAS BASES
-        while (this.pilaOperandos >= 2) {
-            this.asignarOperandos();
-            var baseOrigen = this.pilaOperandos.pop()
-            var NumeroAConvertir = this.pilaOperandos.pop()
+        this.pilaOperandos.forEach(NumeroAConvertir => {
+           
             var resultado = Number(0);
-            var numeroOriginal = String(this.operando1);
+            var numeroOriginal = String(NumeroAConvertir);
             var potencia = Number(0);
             var factorConversion;
             for (var indice = numeroOriginal.length - 1; indice >= 0; indice--) {
+
                 const digitoActual = Number(numeroOriginal[indice]);
-                factorConversion = Math.pow(this.operando2, potencia);
+              
+                factorConversion = Math.pow(DECIMAL, potencia);
                 resultado += digitoActual * factorConversion;
                 potencia++;
             }
-            //aqui vas a tener q hacer una pila a parte para sustituir la existente , porque sino 
-            //creo que va a entrar en bucle infinito
             this.pushOperando(resultado);
-        }
-        */
+        });
+
+
+
 
     }
 
@@ -435,9 +479,7 @@ class CalculadoraEspecializada extends CalculadoraRPN {
             case "h":
                 this.convertirAHexadecimal();
                 break;
-            case ">":
-                this.shiftPila();
-                break;
+            
         }
 
     }
