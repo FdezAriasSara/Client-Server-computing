@@ -48,6 +48,7 @@ input[name="enter"]{
   grid-column:span 3;
  
 }
+   
   /**Especificidad: 011 **/
   input[name="enter"]{
   background-color:#EEBB63;

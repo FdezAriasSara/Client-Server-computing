@@ -32,33 +32,36 @@
         <input type="button" value="MS" onclick=" calculadoraRPN.almacenarEnMemoria()" name="ms">
 
         <!--Primera fila-->
+        <input type="button" value="&#8593" onclick="calculadoraRPN.shift()" name="shift">
         <input type="button" value="x&#178" onclick=" calculadoraRPN.cuadrado( )" name="cuadrado">
         <input type="button" value="x^y" onclick=" calculadoraRPN.potenciaDeXBaseY()" name="potencia">
+        <input type="button" value="√" onclick=" calculadoraRPN.raizCuadrada()" name="sqrt">
+        <input type="button" value="10^x" onclick=" calculadoraRPN.potenciaDeXBase10( )" name="baseDiez">
+
+        <!--Segunda fila-->
+        <input type="button" value="log" onclick=" calculadoraRPN.log( )" name="log">
+        <input type="button" value="&#x3C0" onclick=" calculadoraRPN.mostrarPi()" name="pi">
         <input type="button" value="sin" onclick=" calculadoraRPN.seno()" name="sin">
         <input type="button" value="cos" onclick=" calculadoraRPN.coseno( )" name="cos">
         <input type="button" value="tan" onclick=" calculadoraRPN.tangente()" name="tan">
-        <!--Segunda fila-->
-        <input type="button" value="√" onclick=" calculadoraRPN.raizCuadrada()" name="sqrt">
-        <input type="button" value="10^x" onclick=" calculadoraRPN.potenciaDeXBase10( )" name="baseDiez">
-        <input type="button" value="log" onclick=" calculadoraRPN.log( )" name="log">
-        <input type="button" value="Exp" onclick="calculadoraRPN.exp()" name="exp">
-        <input type="button" value="Mod" onclick="calculadoraRPN.modulo()" name="mod">
         <!--Tercera fila-->
         <input type="button" value="-" onclick="calculadoraRPN.resta()" name="resta">
         <input type="button" value="+" onclick="calculadoraRPN.suma()" name="suma">
         <input type="button" value="x" onclick="calculadoraRPN.multiplicacion()" name="multiplicacion">
+        <input type="button" value="+/-" onclick=" calculadoraRPN.cambioSigno( )" name="+-">
         <input type="button" value="&#247" onclick=" calculadoraRPN.division()" name="division">
-        <input type="button" value="&#8593" onclick="calculadoraRPN.shift()" name="shift">
+
         <!--Cuarta fila-->
 
-        <input type="button" value="&#x3C0" onclick=" calculadoraRPN.mostrarPi()" name="pi">
+
+        <input type="button" value="n!" onclick=" calculadoraRPN.factorial()" name="factorial">
         <input type="button" value="7" onclick=" calculadoraRPN.digitos(7)" name="7">
         <input type="button" value="8" onclick=" calculadoraRPN.digitos(8)" name="8">
         <input type="button" value="9" onclick="calculadoraRPN.digitos(9)" name="9">
         <input type="button" value="CE" onclick=" calculadoraRPN.borrarError( )" name="ce">
 
         <!--Quinta fila-->
-        <input type="button" value="n!" onclick=" calculadoraRPN.factorial()" name="factorial">
+        <input type="button" value="&#x3C0" onclick=" calculadoraRPN.mostrarPi()" name="pi">
         <input type="button" value="4" onclick=" calculadoraRPN.digitos(4)" name="4">
         <input type="button" value="5" onclick=" calculadoraRPN.digitos(5)" name="5">
         <input type="button" value="6" onclick=" calculadoraRPN.digitos(6)" name="6">
@@ -66,14 +69,16 @@
         <!--Sexta fila-->
 
 
-        <input type="button" value="+/-" onclick=" calculadoraRPN.cambioSigno( )" name="+-">
+        <input type="button" value="mod" onclick=" calculadoraRPN.mod()" name="mod">
         <input type="button" value="1" onclick=" calculadoraRPN.digitos(1)" name="1">
         <input type="button" value="2" onclick=" calculadoraRPN.digitos(2)" name="2">
         <input type="button" value="3" onclick=" calculadoraRPN.digitos(3)" name="3">
         <input type="button" value="&#8656" onclick=" calculadoraRPN.borrarUltimoDigito()" name="borrarDigito">
 
         <!--Séptima fila-->
+
         <input type="button" value="," onclick=" calculadoraRPN.decimales()" name=",">
+
         <input type="button" value="0" onclick=" calculadoraRPN.digitos(0)" name="0">
 
         <input type="button" value="Enter" onclick=" calculadoraRPN.enter()" name="enter">

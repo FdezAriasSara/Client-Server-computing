@@ -1,7 +1,7 @@
 "use strict";//esta directiva es de ámbito global al documento
-const ERROR="ERROR";
+const ERROR = "ERROR";
 const PUNTO = '.'
-const VACIO=" "
+const VACIO = " "
 class CalculadoraBasica {
 
     constructor() {
@@ -9,14 +9,14 @@ class CalculadoraBasica {
         this.memoria = Number(0);
         this.operando1 = null;
         this.operando2 = null;
-        this.operacion =VACIO;
-        this.resultado=Number(0);
-        
+        this.operacion = VACIO;
+        this.resultado = Number(0);
+
 
     }
-  
+
     actualizarPantalla() {
-  
+
 
         document.querySelector('input[type="text"]').value = this.pantalla;
     }
@@ -189,23 +189,23 @@ class CalculadoraBasica {
 
         switch (this.operacion) {
             case "*":
-                this.#operandoNeutro(Number(1))
-                this.#operacionSimple();
+                this.operandoNeutro(Number(1))
+                this.operacionSimple();
                 this.operando2 = null;
                 break;
             case "+":
-                this.#operandoNeutro(Number(0))
-                this.#operacionSimple();
+                this.operandoNeutro(Number(0))
+                this.operacionSimple();
                 this.operando2 = null;
                 break;
             case "/":
-                this.#operandoNeutro(Number(1))
-                this.#operacionSimple();
+                this.operandoNeutro(Number(1))
+                this.operacionSimple();
                 this.operando2 = null;
                 break;
             case "-":
-                this.#operandoNeutro(Number(0))
-                this.#operacionSimple();
+                this.operandoNeutro(Number(0))
+                this.operacionSimple();
                 this.operando2 = null;
                 break;
 
@@ -221,7 +221,7 @@ class CalculadoraBasica {
      * En caso de multiplicaciones y divisiones , 1.
      * @param {*} neutro 
      */
-    #operandoNeutro(neutro) {
+    operandoNeutro(neutro) {
         if (this.operando2 === null) {
             this.operando2 = neutro;
         }
@@ -232,7 +232,7 @@ class CalculadoraBasica {
      * Se realiza mediante este manejo de las posibles excepciones producidas durante el proceso de evaluación de la 
      * expresión que representa la operación.
      */
-    #operacionSimple() {
+    operacionSimple() {
 
         try {
             this.resultado = eval(this.operando1 + this.operacion + this.operando2);
@@ -253,7 +253,7 @@ class CalculadoraBasica {
     procesarResultado() {
         if (!isNaN(this.resultado)) {
             this.memoria = this.resultado;//devuelve un number
-            
+
             this.pantalla = this.memoria;
         } else {
             this.pantalla = ERROR;
@@ -262,42 +262,41 @@ class CalculadoraBasica {
     }
 
 }
-const COMA=','
+const COMA = ','
 class CalculadoraCientifica extends CalculadoraBasica {
     constructor() {
         super()
         this.shiftIsPressed = false;
-        this.fixedExponent=false;
+        this.fixedExponent = false;
     }
     /**
      * En memoria empleo 0 , ya que es el elemento neutro de las operaciones que sealizan con ella por defecto.
      */
-    borrarMemoria(){
-        this.memoria=Number(0)
+    borrarMemoria() {
+        this.memoria = Number(0)
         this.#shiftBotonesMemoria();
 
     }
-    fe(){
-       this.fixedExponent=!this.fixedExponent; 
+    fe() {
+        this.fixedExponent = !this.fixedExponent;
     }
     /*
      * Este método recibe el resultado de una operación y lo guarda en memoria y en el operando1. 
      * En caso de que la expresión evalue a NaN , memoria y operando 1 no serán modificados, 
      * y el mensaje "ERROR" se mostrará en la pantalla.   
-     * Reescribo este método para poder ofrecer la funcionalidad exp, característica de la calculadora
-     * científica
+     *
      */
-    procesarResultado() {
+    procesarResultado() {//override de la básica
         if (!isNaN(this.resultado)) {
             this.memoria = this.resultado;//devuelve un number
-            if(this.fixedExponent){
-       
-             this.#mostrarResultadoFe();
-               
-            }else{
-                this.pantalla=this.memoria;
+            if (this.fixedExponent) {
+
+                this.#mostrarResultadoFe();
+
+            } else {
+                this.pantalla = this.memoria;
             }
-           
+
         } else {
             this.pantalla = ERROR;
         }
@@ -315,23 +314,23 @@ class CalculadoraCientifica extends CalculadoraBasica {
      *  -Esta diferencia es equivalente al exponente, en este caso ,9
      *          89092012000000000=89092012e+9=89092012*10^9
      */
-    #mostrarResultadoFe(){
-        
-        var copiaMemoria=String(this.memoria)
-        var nonZero=copiaMemoria.match(/[0-9]*[1-9]/g)[0]
-        var exp=copiaMemoria.length-nonZero.length;    
-        this.pantalla=nonZero+"e^"+exp;
-    }
-    #shiftBotonesMemoria(){
-        var estado=(this.memoria===Number(0))
-     
-        document.querySelector('input[name="mr"]').disabled=estado;
-        document.querySelector('input[name="mc"]').disabled=estado;
+    #mostrarResultadoFe() {
 
-     
+        var copiaMemoria = String(this.memoria)
+        var nonZero = copiaMemoria.match(/[0-9]*[1-9]/g)[0]
+        var exp = copiaMemoria.length - nonZero.length;
+        this.pantalla = nonZero + "e^" + exp;
     }
-    almacenarEnMemoria(){
-        this.memoria=Number(this.pantalla)
+    #shiftBotonesMemoria() {
+        var estado = (this.memoria === Number(0))
+
+        document.querySelector('input[name="mr"]').disabled = estado;
+        document.querySelector('input[name="mc"]').disabled = estado;
+
+
+    }
+    almacenarEnMemoria() {
+        this.memoria = Number(this.pantalla)
         this.#shiftBotonesMemoria();
     }
     mostrarPi() {
@@ -341,61 +340,78 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.actualizarPantalla();
 
     }
-    exp(){
-        this.asignarOperandoUnarias();
-        this.resultado=Math.exp(this.operando1)
-        this.procesarResultado()
+    //override de la básica
+    ejecutarOperaciónBasica() {
+        super.ejecutarOperaciónBasica();
+        if (this.operacion === '%') {
+            this.operandoNeutro(Number(0))
+            this.operacionSimple();
+            this.operando2 = null;
+
+        }
+        this.actualizarPantalla();
+        this.pantalla = VACIO;
+
     }
-   
+
+    modulo() {
+        this.quitarSimboloDecimales(PUNTO);
+        this.asignarOperandos();
+        this.ejecutarOperaciónBasica();
+        this.operacion = '%';
+
+    }
+
     factorial() {
-       
-        this.quitarSimboloDecimales(COMA);      
-        this.ejecutarOperaciónBasica();    
-        this.asignarOperandoUnarias();    
+
+        this.quitarSimboloDecimales(COMA);
+        this.ejecutarOperaciónBasica();
+        this.asignarOperandoUnarias();
         this.#fact();
 
         this.procesarResultado();
-   
+
     }
-    #fact(){
-        this.resultado=Number(1);
-        var operando=Number(1);
-        while(operando<=this.operando1){
-            this.resultado*=Number(operando)
+    #fact() {
+        this.resultado = Number(1);
+        var operando = Number(1);
+        while (operando <= this.operando1) {
+            this.resultado *= Number(operando)
             operando++;
         }
-       
+
     }
     seno() {
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
-        this.asignarOperandoUnarias();      
-        this.shiftIsPressed ? this.resultado= Math.asin(this.operando1) :  this.resultado= Math.sin(this.operando1);
+        this.asignarOperandoUnarias();
+        this.shiftIsPressed ? this.resultado = Math.asin(this.operando1) : this.resultado = Math.sin(this.operando1);
         this.procesarResultado();
 
     }
-   decimales() {
+    //override de la básica
+    decimales() {
         this.pantalla += ",";
         this.actualizarPantalla();
     }
     cuadrado() {
-        
+
         this.quitarSimboloDecimales(COMA);
         this.asignarOperandoUnarias();
-        this.operando2=Number(2)
+        this.operando2 = Number(2)
         this.resultado = Math.pow(this.operando1, this.operando2);
         this.procesarResultado();
     }
     potenciaDeXBase10() {
-        
+
         this.quitarSimboloDecimales(COMA);
         this.asignarOperandoUnarias();
-        this.operando2=Number(10)
+        this.operando2 = Number(10)
         this.resultado = Math.pow(this.operando2, this.operando1);
         this.procesarResultado();
     }
     potenciaDeXBaseY() {
-       
+
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
         this.asignarOperandoUnarias();
@@ -413,7 +429,7 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
         this.asignarOperandoUnarias();
-        this.shiftIsPressed ? this.resultado= Math.atan(this.operando1) : this.resultado = Math.tan(this.operando1);
+        this.shiftIsPressed ? this.resultado = Math.atan(this.operando1) : this.resultado = Math.tan(this.operando1);
         this.procesarResultado();
     }
     log() {
@@ -429,17 +445,20 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.shiftIsPressed = !(this.shiftIsPressed) & true;
         if (this.shiftIsPressed) {
             document.querySelector('input[name="sin"]').value = "arcsin";
-            document.querySelector('input[name="cos"]').value= "arcos";
+            document.querySelector('input[name="cos"]').value = "arcos";
             document.querySelector('input[name="tan"]').value = "arctan";
-         } else {
+        } else {
             document.querySelector('input[name="sin"]').value = "sin";
             document.querySelector('input[name="cos"]').value = "cos";
-            document.querySelector('input[name="tan"]').value= "tan";
-         }
- 
+            document.querySelector('input[name="tan"]').value = "tan";
+        }
+
 
     }
-  
+
 }
 
 var calculadoraCientifica = new CalculadoraCientifica();
+document.addEventListener('keydown', (event) => {
+    calculadoraCientifica.procesarTeclas(event);
+});

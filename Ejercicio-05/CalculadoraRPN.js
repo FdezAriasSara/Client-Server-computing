@@ -19,6 +19,8 @@ class CalculadoraRPN {
         document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
     }
 
+
+
      /**
      * Método que introduce un operando a la pila y actualiza la representación visual de la misma.
      */

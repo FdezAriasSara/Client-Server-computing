@@ -1,4 +1,4 @@
-"use strict";
+"use strict";//esta directiva es de ámbito global al documento
 const ERROR = "ERROR";
 const PUNTO = '.'
 const VACIO = " "
@@ -9,15 +9,17 @@ class CalculadoraBasica {
         this.memoria = Number(0);
         this.operando1 = null;
         this.operando2 = null;
-        this.operacion = "";
+        this.operacion = VACIO;
         this.resultado = Number(0);
+
+
     }
 
     actualizarPantalla() {
+
+
         document.querySelector('input[type="text"]').value = this.pantalla;
-
     }
-
 
     digitos(value) {
 
@@ -187,23 +189,23 @@ class CalculadoraBasica {
 
         switch (this.operacion) {
             case "*":
-                this.#operandoNeutro(Number(1))
-                this.#operacionSimple();
+                this.operandoNeutro(Number(1))
+                this.operacionSimple();
                 this.operando2 = null;
                 break;
             case "+":
-                this.#operandoNeutro(Number(0))
-                this.#operacionSimple();
+                this.operandoNeutro(Number(0))
+                this.operacionSimple();
                 this.operando2 = null;
                 break;
             case "/":
-                this.#operandoNeutro(Number(1))
-                this.#operacionSimple();
+                this.operandoNeutro(Number(1))
+                this.operacionSimple();
                 this.operando2 = null;
                 break;
             case "-":
-                this.#operandoNeutro(Number(0))
-                this.#operacionSimple();
+                this.operandoNeutro(Number(0))
+                this.operacionSimple();
                 this.operando2 = null;
                 break;
 
@@ -219,7 +221,7 @@ class CalculadoraBasica {
      * En caso de multiplicaciones y divisiones , 1.
      * @param {*} neutro 
      */
-    #operandoNeutro(neutro) {
+    operandoNeutro(neutro) {
         if (this.operando2 === null) {
             this.operando2 = neutro;
         }
@@ -230,7 +232,7 @@ class CalculadoraBasica {
      * Se realiza mediante este manejo de las posibles excepciones producidas durante el proceso de evaluación de la 
      * expresión que representa la operación.
      */
-    #operacionSimple() {
+    operacionSimple() {
 
         try {
             this.resultado = eval(this.operando1 + this.operacion + this.operando2);
@@ -251,74 +253,15 @@ class CalculadoraBasica {
     procesarResultado() {
         if (!isNaN(this.resultado)) {
             this.memoria = this.resultado;//devuelve un number
+
             this.pantalla = this.memoria;
         } else {
             this.pantalla = ERROR;
         }
 
     }
-    procesarTeclas(event){
-        var keyPressed = event.key;
-        if (keyPressed !== VACIO) {
-            if (Number.isInteger(Number(keyPressed)) && !event.shiftKey) {
-
-                this.digitos(Number(keyPressed))
-            } else {
-
-                switch (keyPressed) {
-
-                    case "+":
-                        this.suma();
-                        break;
-                    case "-":
-                        this.resta();
-                        break;
-                    case "*":
-                        this.multiplicacion();
-                        break;
-                    case "/":
-                        this.division();
-                        break;
-                    case "r":
-                        this.raizCuadrada();
-                        break;
-                    case "s":
-                        this.cambioSigno();
-                        break;
-                    case "O":
-                        //letra o
-                        this.reiniciar();
-                        break;
-                    case "C":
-                        this.borrarError();
-                        break;
-                    //creo que en términos de usabilidad será mas intuitivo y fácil de entender si 
-                    //las operaciones de memoria requieren que el caracter esté en mayúsculas
-                    case "M":
-                        this.recuperarMemoria();
-                        break;
-                    case "R":
-                        this.restarMemoria();
-                        break;
-                    case "S":
-                        this.sumarMemoria();
-                        break;    
-                    case "%":
-                        console.log("hola")
-                        this.porcentaje();
-                        break;
-                    case ".":
-                        this.decimales();
-                    case "Enter":
-                        this.igual();
-                        break;
-                }
-            }
-        }
-    }
 
 }
-
 var calculadora = new CalculadoraBasica();
 document.addEventListener('keydown', (event) => {
     calculadora.procesarTeclas(event);
