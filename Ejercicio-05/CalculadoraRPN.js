@@ -15,14 +15,14 @@ class CalculadoraRPN {
     }
     digitos(value) {
         this.operandoActual += value;
-        document.formulario.operandoActual.value = this.operandoActual;
+        document.getElementsByName("operandoActual").value = this.operandoActual;
     }
 
     /**
      * Método que introduce un operando a la pila y actualiza la representación visual de la misma.
      */
     pushOperando(operando) {
-        document.formulario.pilaOperandos.value = VACIO;//vaciamos el area del número que está siendo introducido porque se ha seleccionado enter.
+        document.getElementsByName("pilaOperandos").value= VACIO;//vaciamos el area del número que está siendo introducido porque se ha seleccionado enter.
         if (isNaN(operando)) {
             document.formulario.pilaOperandos.value = ERROR;
         } else {
@@ -33,7 +33,7 @@ class CalculadoraRPN {
                 if (currentIndex > 9) {
                     gap = ":  "
                 }
-                document.formulario.pilaOperandos.value += currentIndex + gap + this.pilaOperandos[index] + "\n";
+                document.getElementsByName("pilaOperandos").value += currentIndex + gap + this.pilaOperandos[index] + "\n";
 
             }
             this.memoria = operando;
@@ -124,12 +124,12 @@ class CalculadoraRPN {
     borrarUltimoDigito() {
 
         this.operandoActual = this.operandoActual.slice(0, -1)
-        document.formulario.operandoActual.value = this.operandoActual;
+        document.getElementsByName("operandoActual").value = this.operandoActual;
 
     }
     borrarError(){
         this.operandoActual = VACIO;
-        document.formulario.operandoActual.value = this.operandoActual;
+        document.getElementsByName("operandoActual").value = this.operandoActual;
     }
     reiniciar(){
         this.pilaOperandos = new Array();
@@ -166,8 +166,9 @@ class CalculadoraRPN {
     }
     #shiftBotonesMemoria() {
         var estado = (this.memoria === Number(0))
-        document.formulario.mc.disabled = estado;
-        document.formulario.mr.disabled = estado;
+  
+        document.getElementsByName("mr").disabled=estado;
+        document.getElementsByName("mc").disabled=estado;
     }
     asignarOperandos() {
 
@@ -197,13 +198,13 @@ class CalculadoraRPN {
         //En caso de que shift  esté presionado y se presione de nuevo(!(true)&true=false)
         this.shiftIsPressed = !(this.shiftIsPressed) & true;
         if (this.shiftIsPressed) {
-            document.formulario.sin.value = "arcsin";
-            document.formulario.cos.value = "arcos";
-            document.formulario.tan.value = "arctan";
+            document.getElementsByName("sin").value = "arcsin";
+            document.getElementsByName("cos").value= "arcos";
+            document.getElementsByName("tan").value = "arctan";
         } else {
-            document.formulario.sin.value = "sin";
-            document.formulario.cos.value = "cos";
-            document.formulario.tan.value = "tan";
+            document.getElementsByName("sin").value = "sin";
+            document.getElementsByName("cos").value = "cos";
+            document.getElementsByName("tan").value= "tan";
         }
 
     }
@@ -211,7 +212,7 @@ class CalculadoraRPN {
     procesarTeclas(event) {
 
         var keyPressed = event.key;
-        console.log(keyPressed)
+        
         if (keyPressed !== VACIO) {
             if (Number.isInteger(Number(keyPressed)) && !event.shiftKey) {
 

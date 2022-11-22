@@ -14,7 +14,7 @@ class CalculadoraBasica {
     }
 
     actualizarPantalla() {
-        document.formulario.pantalla.value = this.pantalla;
+        document.getElementsByName("pantalla").value = this.pantalla;
 
     }
 

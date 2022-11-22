@@ -13,11 +13,11 @@ class CalculadoraBasica {
         this.resultado=Number(0);
 
     }
+  
     actualizarPantalla() {
-        document.formulario.pantalla.value = this.pantalla;
+        document.getElementsByName("pantalla").value = this.pantalla;
 
     }
-
 
     digitos(value) {
 
@@ -275,8 +275,9 @@ class CalculadoraCientifica extends CalculadoraBasica {
     }
     #shiftBotonesMemoria(){
         var estado=(this.memoria===Number(0))
-        document.formulario.mc.disabled=estado;
-        document.formulario.mr.disabled=estado;
+        document.getElementsByName("mr").disabled=estado;
+        document.getElementsByName("mc").disabled=estado;
+     
     }
     almacenarEnMemoria(){
         this.memoria=Number(this.pantalla)
@@ -291,12 +292,12 @@ class CalculadoraCientifica extends CalculadoraBasica {
     }
  
     factorial() {
-        console.log("OPERANDO1:" +this.operando1 +" OP2:"+this.operando2)
+       
         this.quitarSimboloDecimales(COMA);      
         this.ejecutarOperaciónBasica();    
         this.asignarOperandoUnarias();    
         this.#fact();
-        console.log("OPERANDO1:" +this.operando1 +" OP2:"+this.operando2)
+
         this.procesarResultado();
    
     }
@@ -371,13 +372,13 @@ class CalculadoraCientifica extends CalculadoraBasica {
         //En caso de que shift  esté presionado y se presione de nuevo(!(true)&true=false)
         this.shiftIsPressed = !(this.shiftIsPressed) & true;
         if (this.shiftIsPressed) {
-            document.formulario.sin.value = "arcsin";
-            document.formulario.cos.value = "arcos";
-            document.formulario.tan.value = "arctan";
+            document.getElementsByName("sin").value = "arcsin";
+            document.getElementsByName("cos").value= "arcos";
+            document.getElementsByName("tan").value = "arctan";
         } else {
-            document.formulario.sin.value = "sin";
-            document.formulario.cos.value = "cos";
-            document.formulario.tan.value = "tan";
+            document.getElementsByName("sin").value = "sin";
+            document.getElementsByName("cos").value = "cos";
+            document.getElementsByName("tan").value= "tan";
         }
 
     }
