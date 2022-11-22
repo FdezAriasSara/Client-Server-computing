@@ -18,24 +18,25 @@ class CalculadoraBasica {
 
     }
 
+
     digitos(value) {
 
         this.pantalla += value;
         this.actualizarPantalla();
     }
     decimales() {
-        this.quitarSimboloDecimales();
-   
-        if(!this.pantalla.includes(".")){
+        this.quitarSimboloDecimales(PUNTO);
+
+        if (!this.pantalla.includes(".")) {
             this.pantalla += ".";
             this.actualizarPantalla();
         }
- 
+
     }
     /*En caso de que tras introducir una punto se presione el simbolo de una operación, se borrará automáticamente*/
     quitarSimboloDecimales(simbolo) {
         if (this.pantalla.length > 0) {
-            if (this.pantalla.charAt(-1)=== simbolo) {
+            if (this.pantalla.charAt(-1) === simbolo) {
                 this.borrarUltimoDigito();
             }
         }
@@ -57,11 +58,9 @@ class CalculadoraBasica {
 
     }
     multiplicacion() {
-        console.log("MULTI :OPERANDO1:" +this.operando1 +" OP2:"+this.operando2)
-        this.quitarSimboloDecimales(PUNTO);       
-        this.asignarOperandos();     
+        this.quitarSimboloDecimales(PUNTO);
+        this.asignarOperandos();
         this.ejecutarOperaciónBasica();
-        console.log("MULTI :OPERANDO1:" +this.operando1 +" OP2:"+this.operando2)
         this.operacion = '*';
 
     }
@@ -85,7 +84,7 @@ class CalculadoraBasica {
         this.operando2 = Number(this.memoria)
         this.operacion = "-";
         this.ejecutarOperaciónBasica();
-        this.pantalla =VACIO;
+        this.pantalla = VACIO;
 
     }
     sumarMemoria() {
@@ -94,7 +93,7 @@ class CalculadoraBasica {
         this.operando2 = Number(this.memoria)
         this.operacion = "+";
         this.ejecutarOperaciónBasica();
-        this.pantalla =VACIO;
+        this.pantalla = VACIO;
 
     }
 
@@ -104,14 +103,14 @@ class CalculadoraBasica {
         this.actualizarPantalla();
     }
     borrarError() {
-        if(this.pantalla===ERROR){
-         this.pantalla= VACIO;
- 
-        }else{
-         this.borrarUltimoDigito();
+        if (this.pantalla === ERROR) {
+            this.pantalla = VACIO;
+
+        } else {
+            this.borrarUltimoDigito();
         }
- 
-     }
+
+    }
     borrarUltimoDigito() {
         this.pantalla = this.pantalla.slice(0, -1)
         this.actualizarPantalla();
@@ -132,17 +131,17 @@ class CalculadoraBasica {
         this.resultado = this.operando1 * Number(eval(this.operando2 + "/" + Number(100)))
         this.procesarResultado();
         this.actualizarPantalla();
-        this.pantalla =  VACIO;
+        this.pantalla = VACIO;
 
     }
     raizCuadrada() {
         this.quitarSimboloDecimales(PUNTO);
         this.asignarOperandoUnarias();
         this.operacion = 'sqrt'
-        this.resultado=  Math.sqrt(this.operando1);//devuelve un number
+        this.resultado = Math.sqrt(this.operando1);//devuelve un number
         this.procesarResultado();
         this.actualizarPantalla();
-        this.pantalla =  VACIO;
+        this.pantalla = VACIO;
 
     }
 
@@ -154,26 +153,26 @@ class CalculadoraBasica {
         this.ejecutarOperaciónBasica();
     }
     asignarOperandoUnarias() {
-       //Si la pantalla está vacía no asigno operandos, ya que Number( ) devuelve 0, produciendo resultados erróneos en operaciones como la multiplicación                                                             
-        if (this.pantalla !=  VACIO) {
+        //Si la pantalla está vacía no asigno operandos, ya que Number( ) devuelve 0, produciendo resultados erróneos en operaciones como la multiplicación                                                             
+        if (this.pantalla !== VACIO) {
             this.operando1 = Number(this.pantalla);
         } else {
             this.operando1 = this.memoria;
         }
     }
     asignarOperandos() {
-        
-        if(this.pantalla!= VACIO){
+
+        if (this.pantalla != VACIO) {
             //Si la pantalla está vacía no asigno operandos, ya que Number( ) devuelve 0, produciendo resultados erróneos en operaciones como la multiplicación 
-            if ( this.operando1 !== null && this.operando2 === null) {
-            
+            if (this.operando1 !== null && this.operando2 === null) {
+
                 this.operando2 = Number(this.pantalla);
             } else {
-               
+
                 this.operando1 = Number(this.pantalla);
             }
         }
-       
+
     }
     /**
      * Método que ejecuta los calculos de las operaciones básicas: Suma, resta , multiplicación y división.
@@ -189,17 +188,17 @@ class CalculadoraBasica {
         switch (this.operacion) {
             case "*":
                 this.#operandoNeutro(Number(1))
-                this.#operacionSimple();            
+                this.#operacionSimple();
                 this.operando2 = null;
                 break;
             case "+":
                 this.#operandoNeutro(Number(0))
-                this.#operacionSimple(); 
+                this.#operacionSimple();
                 this.operando2 = null;
                 break;
             case "/":
                 this.#operandoNeutro(Number(1))
-                this.#operacionSimple();             
+                this.#operacionSimple();
                 this.operando2 = null;
                 break;
             case "-":
@@ -210,7 +209,7 @@ class CalculadoraBasica {
 
         }
         this.actualizarPantalla();
-        this.pantalla =  VACIO;;
+        this.pantalla = VACIO;;
 
     }
     /**
@@ -220,9 +219,9 @@ class CalculadoraBasica {
      * En caso de multiplicaciones y divisiones , 1.
      * @param {*} neutro 
      */
-    #operandoNeutro(neutro){
-        if(this.operando2===null){
-            this.operando2=neutro;
+    #operandoNeutro(neutro) {
+        if (this.operando2 === null) {
+            this.operando2 = neutro;
         }
     }
 
@@ -234,13 +233,13 @@ class CalculadoraBasica {
     #operacionSimple() {
 
         try {
-            this.resultado=eval(this.operando1 + this.operacion + this.operando2);
+            this.resultado = eval(this.operando1 + this.operacion + this.operando2);
             this.procesarResultado();
         }
         catch (err) {
             //En caso de que eval de lugar a una excepción, se mostrará el mensaje de error.
             console.log(err)
-            this.pantalla =ERROR;
+            this.pantalla = ERROR;
         }
 
     }
@@ -250,13 +249,13 @@ class CalculadoraBasica {
      * y el mensaje "ERROR" se mostrará en la pantalla.   
      */
     procesarResultado() {
-        if(!isNaN(this.resultado)){
-            this.memoria =this.resultado;//devuelve un number
+        if (!isNaN(this.resultado)) {
+            this.memoria = this.resultado;//devuelve un number
             this.pantalla = this.memoria;
-        }else{
-            this.pantalla=ERROR;
+        } else {
+            this.pantalla = ERROR;
         }
-        
+
     }
 
 }

@@ -14,7 +14,7 @@ textarea[name="pilaOperandos"]{
     background-color:#EEBB63;
     font-size: 2em;
     border-style:hidden;
-    text-align:right;
+    text-align:left;
 
   }
  
@@ -23,8 +23,7 @@ textarea[name="operandoActual"]{
     grid-column: 1 / 6;
     grid-row: 3;
     background-color:#FFF4CC;
-  font-size: 10em;
-    
+    font-size: 3em;    
     border-style:hidden;
     text-align:right;
   } 
@@ -33,8 +32,8 @@ textarea[name="operandoActual"]{
    
     font-size: 1.2em;
     padding:1.2vw;  
-    padding:0.3vh;
-    margin:0.7vh;
+  
+
     color:#FFFFFF;
     background-color: #68655E;
 
@@ -81,8 +80,9 @@ input[name="enter"]{
       display:grid;
       background-color: #2C2C25;
       grid-template-columns:repeat(5, 1fr);
-      grid-template-rows: repeat(14,1fr);
-      padding:5vw;
+      grid-column-gap:0.5em;
+      grid-row-gap:0.5em;
+      padding:3vw;
       
   }
   /**Especificidad: 001 **/ 
