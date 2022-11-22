@@ -120,7 +120,11 @@ class CalculadoraRPN {
         this.shiftIsPressed ? this.resultado = Math.atan(this.operando1) : this.resultado = Math.tan(this.operando1);
         this.pushOperando(this.resultado);
     }
-   
+    modulo(){
+        this.asignarOperandos();
+        this.resultado=this.operando1%this.operando2;
+        this.pushOperando(this.resultado);
+    }
     borrarMemoria() {
         this.memoria = Number(0);
         this.#shiftBotonesMemoria();
