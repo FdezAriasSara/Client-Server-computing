@@ -11,12 +11,14 @@ class CalculadoraBasica {
         this.operando2 = null;
         this.operacion =VACIO;
         this.resultado=Number(0);
+        
 
     }
   
     actualizarPantalla() {
-        document.getElementsByName("pantalla").value = this.pantalla;
+  
 
+        document.querySelector('input[type="text"]').value = this.pantalla;
     }
 
     digitos(value) {
@@ -251,6 +253,7 @@ class CalculadoraBasica {
     procesarResultado() {
         if (!isNaN(this.resultado)) {
             this.memoria = this.resultado;//devuelve un number
+            
             this.pantalla = this.memoria;
         } else {
             this.pantalla = ERROR;
@@ -264,6 +267,7 @@ class CalculadoraCientifica extends CalculadoraBasica {
     constructor() {
         super()
         this.shiftIsPressed = false;
+        this.fixedExponent=false;
     }
     /**
      * En memoria empleo 0 , ya que es el elemento neutro de las operaciones que sealizan con ella por defecto.
@@ -273,10 +277,57 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.#shiftBotonesMemoria();
 
     }
+    fe(){
+       this.fixedExponent=!this.fixedExponent; 
+    }
+    /*
+     * Este método recibe el resultado de una operación y lo guarda en memoria y en el operando1. 
+     * En caso de que la expresión evalue a NaN , memoria y operando 1 no serán modificados, 
+     * y el mensaje "ERROR" se mostrará en la pantalla.   
+     * Reescribo este método para poder ofrecer la funcionalidad exp, característica de la calculadora
+     * científica
+     */
+    procesarResultado() {
+        if (!isNaN(this.resultado)) {
+            this.memoria = this.resultado;//devuelve un number
+            if(this.fixedExponent){
+       
+             this.#mostrarResultadoFe();
+               
+            }else{
+                this.pantalla=this.memoria;
+            }
+           
+        } else {
+            this.pantalla = ERROR;
+        }
+
+    }
+    /**
+     * Al activar el "fixed exponent", no se cambia como se guardan los resultados en la memoria 
+     * pero si se cambia la forma de mostrarlos al ser procesados.
+     * 
+     * Para ello realizo un match:
+     *  x.e: 89092012000000000
+     *  -Este toma los valores previos a la secuencia de ceros, en este caso
+     *      nonzero=89092012
+     *  -Una vez lo tiene, resta esta cantidad de números a la cantidad de digitos totales.
+     *  -Esta diferencia es equivalente al exponente, en este caso ,9
+     *          89092012000000000=89092012e+9=89092012*10^9
+     */
+    #mostrarResultadoFe(){
+        
+        var copiaMemoria=String(this.memoria)
+        var nonZero=copiaMemoria.match(/[0-9]*[1-9]/g)[0]
+        var exp=copiaMemoria.length-nonZero.length;    
+        this.pantalla=nonZero+"e^"+exp;
+    }
     #shiftBotonesMemoria(){
         var estado=(this.memoria===Number(0))
-        document.getElementsByName("mr").disabled=estado;
-        document.getElementsByName("mc").disabled=estado;
+     
+        document.querySelector('input[name="mr"]').disabled=estado;
+        document.querySelector('input[name="mc"]').disabled=estado;
+
      
     }
     almacenarEnMemoria(){
@@ -290,7 +341,12 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.actualizarPantalla();
 
     }
- 
+    exp(){
+        this.asignarOperandoUnarias();
+        this.resultado=Math.exp(this.operando1)
+        this.procesarResultado()
+    }
+   
     factorial() {
        
         this.quitarSimboloDecimales(COMA);      
@@ -372,14 +428,15 @@ class CalculadoraCientifica extends CalculadoraBasica {
         //En caso de que shift  esté presionado y se presione de nuevo(!(true)&true=false)
         this.shiftIsPressed = !(this.shiftIsPressed) & true;
         if (this.shiftIsPressed) {
-            document.getElementsByName("sin").value = "arcsin";
-            document.getElementsByName("cos").value= "arcos";
-            document.getElementsByName("tan").value = "arctan";
-        } else {
-            document.getElementsByName("sin").value = "sin";
-            document.getElementsByName("cos").value = "cos";
-            document.getElementsByName("tan").value= "tan";
-        }
+            document.querySelector('input[name="sin"]').value = "arcsin";
+            document.querySelector('input[name="cos"]').value= "arcos";
+            document.querySelector('input[name="tan"]').value = "arctan";
+         } else {
+            document.querySelector('input[name="sin"]').value = "sin";
+            document.querySelector('input[name="cos"]').value = "cos";
+            document.querySelector('input[name="tan"]').value= "tan";
+         }
+ 
 
     }
   

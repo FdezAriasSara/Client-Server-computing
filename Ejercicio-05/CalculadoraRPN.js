@@ -1,5 +1,6 @@
 "use strict";
 const VACIO = ""
+const ERROR="ERROR"
 class CalculadoraRPN {
 
     constructor() {
@@ -15,16 +16,16 @@ class CalculadoraRPN {
     }
     digitos(value) {
         this.operandoActual += value;
-        document.getElementsByName("operandoActual").value = this.operandoActual;
+        document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
     }
 
-    /**
+     /**
      * Método que introduce un operando a la pila y actualiza la representación visual de la misma.
      */
-    pushOperando(operando) {
-        document.getElementsByName("pilaOperandos").value= VACIO;//vaciamos el area del número que está siendo introducido porque se ha seleccionado enter.
+      pushOperando(operando) {
+        document.querySelector('textArea[name="pilaOperandos"]').value= VACIO;//vaciamos el area del número que está siendo introducido porque se ha seleccionado enter.
         if (isNaN(operando)) {
-            document.formulario.pilaOperandos.value = ERROR;
+            document.querySelector('textArea[name="pilaOperandos"]').value = ERROR;
         } else {
             var gap = ":      "
             this.pilaOperandos.push(Number(operando));//convertimos el numero introducido a number y lo metemos en la pila de operadores.
@@ -33,7 +34,7 @@ class CalculadoraRPN {
                 if (currentIndex > 9) {
                     gap = ":  "
                 }
-                document.getElementsByName("pilaOperandos").value += currentIndex + gap + this.pilaOperandos[index] + "\n";
+                document.querySelector('textArea[name="pilaOperandos"]').value += currentIndex + gap + this.pilaOperandos[index] + "\n";
 
             }
             this.memoria = operando;
@@ -117,6 +118,7 @@ class CalculadoraRPN {
         this.shiftIsPressed ? this.resultado = Math.atan(this.operando1) : this.resultado = Math.tan(this.operando1);
         this.pushOperando(this.resultado);
     }
+   
     borrarMemoria() {
         this.memoria = Number(0);
         this.#shiftBotonesMemoria();
@@ -124,12 +126,12 @@ class CalculadoraRPN {
     borrarUltimoDigito() {
 
         this.operandoActual = this.operandoActual.slice(0, -1)
-        document.getElementsByName("operandoActual").value = this.operandoActual;
+        document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
 
     }
     borrarError(){
         this.operandoActual = VACIO;
-        document.getElementsByName("operandoActual").value = this.operandoActual;
+        document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
     }
     reiniciar(){
         this.pilaOperandos = new Array();
@@ -167,8 +169,8 @@ class CalculadoraRPN {
     #shiftBotonesMemoria() {
         var estado = (this.memoria === Number(0))
   
-        document.getElementsByName("mr").disabled=estado;
-        document.getElementsByName("mc").disabled=estado;
+        document.querySelector('input[name="mr"]').disabled=estado;
+        document.querySelector('input[name="mc"]').disabled=estado;
     }
     asignarOperandos() {
 
@@ -190,7 +192,7 @@ class CalculadoraRPN {
 
         this.pushOperando(this.operandoActual);
         this.operandoActual = VACIO;
-        document.formulario.operandoActual.value = VACIO;
+        document.querySelector('textArea[name="operandoActual"]').value = VACIO;
 
     }
     shift() {
@@ -198,13 +200,13 @@ class CalculadoraRPN {
         //En caso de que shift  esté presionado y se presione de nuevo(!(true)&true=false)
         this.shiftIsPressed = !(this.shiftIsPressed) & true;
         if (this.shiftIsPressed) {
-            document.getElementsByName("sin").value = "arcsin";
-            document.getElementsByName("cos").value= "arcos";
-            document.getElementsByName("tan").value = "arctan";
+           document.querySelector('input[name="sin"]').value = "arcsin";
+           document.querySelector('input[name="cos"]').value= "arcos";
+           document.querySelector('input[name="tan"]').value = "arctan";
         } else {
-            document.getElementsByName("sin").value = "sin";
-            document.getElementsByName("cos").value = "cos";
-            document.getElementsByName("tan").value= "tan";
+           document.querySelector('input[name="sin"]').value = "sin";
+           document.querySelector('input[name="cos"]').value = "cos";
+           document.querySelector('input[name="tan"]').value= "tan";
         }
 
     }
@@ -320,8 +322,6 @@ class CalculadoraRPN {
     }
 
 }
-
-
 var calculadoraRPN = new CalculadoraRPN();
 document.addEventListener('keydown', (event) => {
     calculadoraRPN.procesarTeclas(event);
