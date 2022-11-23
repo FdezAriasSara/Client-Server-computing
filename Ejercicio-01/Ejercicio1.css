@@ -26,6 +26,7 @@ body {
 p{
     font-size: 1.3em;
     color: #2B1834;
-    
+    /*Esta regla produce un warning en el validador, enunciando que no hay color de fondo. Esto no es así, 
+    ya que este elemento heredará el color de fondo de su elemento padre, en este caso, body.*/
 }
 

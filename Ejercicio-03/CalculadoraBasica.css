@@ -9,7 +9,8 @@
 label{
   grid-column:1/6;
   /*Hace que ocupe de la columna 1 a la 6 (en este caso, todas las columnas)*/
-  color:#E4A4E5;
+  color:#E4A4E5; 
+  /*Produce un warning: Realmente, sí hay color de fondo, heredado de su elemento padre , en este caso , form.*/
   font-style:italic;
 
 }
@@ -23,9 +24,7 @@ input[type="text"]{
   font-size: 3.5vw; 
   text-align: right;
   padding:3vw;
-  margin:1.2vw;
-  grid-column: span 5;
-  grid-row: span 2;
+  margin:1.2vw; 
   background-color: #BECED0;
   color:#1A1A1A;
   border-color: #D0DCDC;
@@ -47,7 +46,7 @@ input[type="button"]{
 input[type="button"]:nth-of-type(-n+6)
 { 
 
-  font-style:bold;
+  font-weight: bold;
   border-color: #E4A4E5;
   color:#F4B8E1;
   background-color:#2E323D;
@@ -55,7 +54,7 @@ input[type="button"]:nth-of-type(-n+6)
   border-radius:  5vw;
 }
 /**/
-input[name="="]{
+input[name="="]{ /*Produce un warning , indicando que no se establece color de fondo. Esto se ha hecho así para aprovechar el color establecido en la regla más genérica , que afecta a todos los botones que no la sobrescriban(input[name=button)*/
   background-color: #EDF4B8;
   border-color: #E8F09E;
 }
@@ -63,6 +62,7 @@ input[name="="]{
 /**Especificidad: 011 **/
 input[name="suma"]{
   grid-row: span 2;
+  /*Produce un warning , indicando que no se establece color de fondo. Esto se ha hecho así para aprovechar el color establecido en la regla más genérica , que afecta a todos los botones que no la sobrescriban(input[name=button)*/
   background-color: #f1d6c0;
   border-color:#EBC7A8;
   
@@ -72,7 +72,7 @@ input[name="suma"]{
 
 /**Especificidad: 011 **/
 input[name="mrc"],input[name="mrestar"],input[name="msumar"]{
-
+/*Produce un warning , indicando que no se establece color de fondo. Esto se ha hecho así para aprovechar el color establecido en la regla más genérica , que afecta a todos los botones que no la sobrescriban(input[name=button)*/
   background-color: #C7D8F9;
  
   border-color: #A9C2F4;
@@ -80,7 +80,7 @@ input[name="mrc"],input[name="mrestar"],input[name="msumar"]{
 }
 /**Especificidad: 011 **/
 input[name="."],input[name="multiplicacion"],input[name="division"],input[name="resta"]{
-
+/*Produce un warning , indicando que no se establece color de fondo. Esto se ha hecho así para aprovechar el color establecido en la regla más genérica , que afecta a todos los botones que no la sobrescriban(input[name=button)*/
   background-color: #D9F4B8;
  
   border-color: #C9EF9A;
@@ -89,14 +89,15 @@ input[name="."],input[name="multiplicacion"],input[name="division"],input[name="
 
 /**Especificidad: 001 **/
 form {
-    
+    /*Produce un warning , indicando que no se establece color de fondo. Esto se ha hecho así porque se pretende que este elemento herede el color de su elemento padre, body.*/
     display:grid; 
     border-radius:  1.2vw;
     background-color: #2E323D; 
     grid-template-columns:repeat(5, 1fr);
     /*Hace que la malla tenga 5 columnas de un frame*/
-   
-  padding:2vw;
+    padding:0.7vw;
+    grid-column-gap:0.5em;
+    grid-row-gap:0.5em;
 }
 /**Especificidad: 001 **/ 
 body{

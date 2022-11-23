@@ -6,21 +6,43 @@
   descritas en CSS Values and Units Module Level 3, apartado 5.1.2
   **********************/
 
-
+/*Especificidad:001*/
+textarea{
+  border-style:hidden;
+  grid-column: 1 / 6;
+ }
+/**Especificidad: 001 **/
+form {
+  color:#000000;
+  display:grid;
+  background-color: #2C2C25;
+  grid-template-columns:repeat(5, 1fr);
+  grid-column-gap:0.5em;
+  grid-row-gap:0.5em;
+  padding:3vw;
+  
+}
+/**Especificidad: 001 **/ 
+body{
+display:flex;
+flex-direction:column;
+justify-content: center;
+align-items:center;
+}
 /**Especificidad: 011 **/
 textarea[name="pilaOperandos"]{
-    grid-column: 1 / 6;
+    
     grid-row: 1/3;
     background-color:#EEBB63;
-    font-size: 2em;
-    border-style:hidden;
+    /*Da lugar a una advertencia de validación, en este caso el color de primer plano se hereda del elemento padre form.*/
+    font-size: 2em; 
     text-align:left;
 
   }
- 
+  
 /**Especificidad: 011 **/
 textarea[name="operandoActual"]{
-    grid-column: 1 / 6;
+    /*Da lugar a una advertencia de validación, en este caso el color de primer plano se hereda del elemento padre form.*/
     grid-row: 3;
     background-color:#FFF4CC;
     font-size: 3em;    
@@ -31,10 +53,10 @@ textarea[name="operandoActual"]{
   input[type="button"]{ 
    
     font-size: 1.2em;
-    padding:1.2vw;  
-  
+    padding:1.2vw;   
 
     color:#FFFFFF;
+    
     background-color: #68655E;
 
     border-radius:  1.2vw;
@@ -46,11 +68,6 @@ textarea[name="operandoActual"]{
   /**Especificidad: 011 **/
 input[name="enter"]{
   grid-column:span 3;
- 
-}
-   
-  /**Especificidad: 011 **/
-  input[name="enter"]{
   background-color:#EEBB63;
   border-color: #E9A735;
   color:#000000;
@@ -75,22 +92,5 @@ input[name="enter"]{
     border:hidden;
   }
   
-  /**Especificidad: 001 **/
-  form {
-      color:#000000;
-      display:grid;
-      background-color: #2C2C25;
-      grid-template-columns:repeat(5, 1fr);
-      grid-column-gap:0.5em;
-      grid-row-gap:0.5em;
-      padding:3vw;
-      
-  }
-  /**Especificidad: 001 **/ 
-  body{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items:center;
-  }
+  
   
