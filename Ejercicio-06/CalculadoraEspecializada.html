@@ -33,7 +33,7 @@
         <!--Bases   -->
         <input type="button" value="Bin" onclick=" calculadoraEspecial.convertirA(BINARIA)" name="bin">
         <input type="button" value="Oct" onclick=" calculadoraEspecial.convertirA(OCTAL)" name="oct">
-        <input type="button" value="Dec" onclick=" calculadoraEspecial.convertirA(DECIMAL)" name="dec" >
+        <input type="button" value="Dec" onclick=" calculadoraEspecial.convertirA(DECIMAL)" name="dec">
         <input type="button" value="Hex" onclick=" calculadoraEspecial.convertirA(HEXA)" name="hex">
         <input type="button" value="&#8593" onclick="calculadoraEspecial.shift()" name="shift">
         <input type="button" value="+/-" onclick=" calculadoraEspecial.cambioSigno( )" name="+-">
@@ -50,58 +50,58 @@
         <input type="button" value="10^x" onclick=" calculadoraEspecial.potenciaDeXBase10( )" name="baseDiez">
         <input type="button" value="log" onclick=" calculadoraEspecial.log( )" name="log">
 
-      
+
         <!--Tercera fila-->
         <input type="button" value="-" onclick="calculadoraEspecial.resta()" name="resta">
-        <input type="button" value="A" onclick="calculadoraEspecial.digitos(10)"  name="A" disabled>
+        <input type="button" value="A" onclick="calculadoraEspecial.escribeLetra('A')" name="A" disabled>
         <input type="button" value="+" onclick="calculadoraEspecial.suma()" name="suma">
         <input type="button" value="x" onclick="calculadoraEspecial.multiplicacion()" name="multiplicacion">
         <input type="button" value="&#247" onclick=" calculadoraEspecial.division()" name="division">
-      
+
         <!--Cuarta fila-->
 
         <input type="button" value="&#x3C0" onclick=" calculadoraEspecial.mostrarPi()" name="pi">
-      
-        <input type="button" value="B" onclick="calculadoraEspecial.digitos(11)"  name="B" disabled>
+
+        <input type="button" value="B" onclick="calculadoraEspecial.escribeLetra('B')" name="B" disabled>
         <input type="button" value="7" onclick=" calculadoraEspecial.digitos(7)" name="7">
         <input type="button" value="8" onclick=" calculadoraEspecial.digitos(8)" name="8">
         <input type="button" value="9" onclick="calculadoraEspecial.digitos(9)" name="9">
-      
-       
+
+
 
         <!--Quinta fila-->
-     
+
         <input type="button" value="on/c" onclick="calculadoraEspecial.reiniciar()" name="c">
-        <input type="button" value="C" onclick="calculadoraEspecial.digitos(12)"  name="C" disabled>
-        
+        <input type="button" value="C" onclick="calculadoraEspecial.escribeLetra('C')" name="C" disabled>
+
         <input type="button" value="4" onclick=" calculadoraEspecial.digitos(4)" name="4">
         <input type="button" value="5" onclick=" calculadoraEspecial.digitos(5)" name="5">
         <input type="button" value="6" onclick=" calculadoraEspecial.digitos(6)" name="6">
-       
-        
 
- 
-       
-        <!--Sexta fila-->        
-        <input type="button" value="D" onclick="calculadoraEspecial.digitos(13)"  name="D"disabled>
+
+
+
+
+        <!--Sexta fila-->
+        <input type="button" value="D" onclick="calculadoraEspecial.escribeLetra('D')" name="D" disabled>
         <input type="button" value="1" onclick=" calculadoraEspecial.digitos(1)" name="1">
         <input type="button" value="2" onclick=" calculadoraEspecial.digitos(2)" name="2">
         <input type="button" value="3" onclick=" calculadoraEspecial.digitos(3)" name="3">
         <input type="button" value="CE" onclick=" calculadoraEspecial.borrarError( )" name="ce">
 
         <!--Séptima fila-->
-        
 
 
-        <input type="button" value="E" onclick="calculadoraEspecial.digitos(14)"  name="E" disabled>
+
+        <input type="button" value="E" onclick="calculadoraEspecial.escribeLetra('E')" name="E" disabled>
         <input type="button" value="," onclick=" calculadoraEspecial.decimales()" name=",">
-        <input type="button" value="0" onclick=" calculadoraEspecial.digitos(0)" name="0">      
+        <input type="button" value="0" onclick=" calculadoraEspecial.digitos(0)" name="0">
 
-       
+
         <input type="button" value="&#8656" onclick=" calculadoraEspecial.borrarUltimoDigito()" name="borrarDigito">
-       
-       
-        <input type="button" value="F" onclick="calculadoraEspecial.digitos(15)"  name="F"disabled>
+
+
+        <input type="button" value="F" onclick="calculadoraEspecial.escribeLetra('F')" name="F" disabled>
         <input type="button" value="mod" onclick=" calculadoraRPN.modulo()" name="mod">
         <input type="button" value="Enter" onclick=" calculadoraEspecial.enter()" name="enter">
 

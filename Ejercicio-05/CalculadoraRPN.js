@@ -206,12 +206,12 @@ class CalculadoraRPN {
         this.shiftIsPressed = !(this.shiftIsPressed) & true;
         if (this.shiftIsPressed) {
             document.querySelector('input[name="sin"]').value = "arcsin";
-            document.querySelector('input[name="cos"]').valu = "arcos";
-            document.querySelector('input[name="tan"]').valu = "arctan";
+            document.querySelector('input[name="cos"]').value = "arcos";
+            document.querySelector('input[name="tan"]').value = "arctan";
         } else {
             document.querySelector('input[name="sin"]').value = "sin";
-            document.querySelector('input[name="cos"]').valu = "cos";
-            document.querySelector('input[name="tan"]').valu = "tan";
+            document.querySelector('input[name="cos"]').value = "cos";
+            document.querySelector('input[name="tan"]').value = "tan";
         }
 
     }

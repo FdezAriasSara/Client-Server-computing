@@ -137,7 +137,7 @@ class CalculadoraRPN {
     borrarError() {
         this.pilaOperandos.pop();
         this.actualizarPila();
-     }
+    }
     reiniciar() {
         this.pilaOperandos = new Array();
         this.memoria = Number(0);
@@ -206,12 +206,12 @@ class CalculadoraRPN {
         this.shiftIsPressed = !(this.shiftIsPressed) & true;
         if (this.shiftIsPressed) {
             document.querySelector('input[name="sin"]').value = "arcsin";
-            document.querySelector('input[name="cos"]').valu = "arcos";
-            document.querySelector('input[name="tan"]').valu = "arctan";
+            document.querySelector('input[name="cos"]').value = "arcos";
+            document.querySelector('input[name="tan"]').value = "arctan";
         } else {
             document.querySelector('input[name="sin"]').value = "sin";
-            document.querySelector('input[name="cos"]').valu = "cos";
-            document.querySelector('input[name="tan"]').valu = "tan";
+            document.querySelector('input[name="cos"]').value = "cos";
+            document.querySelector('input[name="tan"]').value = "tan";
         }
 
     }
@@ -339,7 +339,8 @@ class CalculadoraEspecializada extends CalculadoraRPN {
     convertirA(baseResultado) {
 
         if (this.baseActual != DECIMAL) {
-            this.#convertirADecimalDesde(this.baseActual);
+
+            this.#convertirADecimalDesde();
         }
 
         this.#convertirDeDecimalA(baseResultado)
@@ -347,70 +348,10 @@ class CalculadoraEspecializada extends CalculadoraRPN {
         this.#restringirTeclas();
 
     }
-    #restringirTeclas() {
-        var pre='input[name="';
-  
-        switch (this.baseActual) {
-            case BINARIA:
-       
-                document.querySelector('input[type="button"]').disabled = true;
-                document.querySelector('input[name="0"]').disabled=false;
-                document.querySelector('input[name="1"]').disabled=false;
-              
-                document.querySelector('input[name="dec"]').disabled=false;
-                document.querySelector('input[name="hex"]').disabled=false;
-                document.querySelector('input[name="enter"]').disabled=false;
-               
 
-                break;
-            case OCTAL:
-                document.querySelector('input[type="button"]').disabled = true;
-                //habilitamos los números del 0 al 7 y los botones de cambio de base y borrado.
-          
-                for (let i = 0; i< 8;i++) {
-                   var selector=pre+i+'"]'                   
-                    document.querySelector(selector).disabled = false;
-                }
-
-            
-                document.querySelector('input[name="dec"]').disabled =false;
-                document.querySelector('input[name="bin"]').disabled =false;
-                document.querySelector('input[name="hex"]').disabled =false;
-                document.querySelector('input[name="enter"]').disabled =false;
-
-
-                break;
-            case DECIMAL:
-                document.querySelector('input[type="button"]').disabled = false;
-                document.querySelector('input[name="A"],input[name="B"],input[name="C"],input[name="D"],input[name="E"],input[name="F"]').disabled = true;
-
-                break;
-            case HEXA:
-                document.querySelector('input[type="button"]').disabled = true;
-                //habilitamos los números del 0 al 9 y los botones de cambio de base y borrado.
-                for (let i = 0; i< 10;i++) {
-                    var selector=pre+i+'"]'                    
-                    document.querySelector(selector).disabled = false;
-                }
-                document.querySelector('input[name="dec"]').disabled =false;
-                document.querySelector('input[name="bin"]').disabled =false;
-                document.querySelector('input[name="oct"]').disabled =false;
-                document.querySelector('input[name="A"]').disabled =false;
-                document.querySelector('input[name="B"]').disabled =false;
-                document.querySelector('input[name="C"]').disabled =false;
-                document.querySelector('input[name="D"]').disabled =false;
-                document.querySelector('input[name="E"]').disabled =false;
-                document.querySelector('input[name="F"]').disabled =false;
-
-                break;
-        }
-        document.querySelector('input[name="enter"]').disabled =false;
-        document.querySelector('input[name="ce"]').disabled =false;
-        document.querySelector('input[name="c"]').disabled =false;
-    }
 
     #convertirDeDecimalA(baseResultado) {
-     
+
 
         for (var indice = 0; indice < this.pilaOperandos.length; indice++) {
 
@@ -422,7 +363,7 @@ class CalculadoraEspecializada extends CalculadoraRPN {
                 resto = cociente % baseResultado;
                 cociente = Math.floor(cociente / baseResultado);
                 resultado.push(String(resto))
-           
+
             } while (cociente >= baseResultado)
 
 
@@ -438,10 +379,48 @@ class CalculadoraEspecializada extends CalculadoraRPN {
         }
         this.actualizarPila();
     }
-    #convertirADecimalDesde(baseOrigen) {
-
+    #convertirPilaADecimal(){
+        
+        for (var index = 0; index < this.pilaOperandos.length; index++) {
+            var numeroDecimal=VACIO;
+            const element = String(this.pilaOperandos[index]);
+            for (let digito = 0; digito <element.length; digito++) {
+               var dig=element[digito];
+                switch(dig){
+                    case "A":
+                        numeroDecimal+='10'
+                        break;
+                     case "B":
+                        numeroDecimal+='11'
+                        break;
+                     case "C":
+                        numeroDecimal+='12'
+                        break;
+                    case "D":
+                        numeroDecimal+='13'
+                        break;
+                     case "E":
+                        numeroDecimal+='14'
+                        break;
+                     case "F":
+                        numeroDecimal+='15'
+                        break;
+                     default:
+                        numeroDecimal+=dig;
+                        break;
+                }
+                
+            }
+            this.pilaOperandos[index]=Number(numeroDecimal)
+        }
+    }
+   
+    #convertirADecimalDesde() {
+        if(this.baseActual==HEXA){
+            this.#convertirPilaADecimal();
+        }
         this.pilaOperandos.forEach(NumeroAConvertir => {
-           
+
             var resultado = Number(0);
             var numeroOriginal = String(NumeroAConvertir);
             var potencia = Number(0);
@@ -449,7 +428,7 @@ class CalculadoraEspecializada extends CalculadoraRPN {
             for (var indice = numeroOriginal.length - 1; indice >= 0; indice--) {
 
                 const digitoActual = Number(numeroOriginal[indice]);
-              
+
                 factorConversion = Math.pow(DECIMAL, potencia);
                 resultado += digitoActual * factorConversion;
                 potencia++;
@@ -462,7 +441,10 @@ class CalculadoraEspecializada extends CalculadoraRPN {
 
     }
 
-
+    escribeLetra(letra){
+        this.operandoActual+=letra;
+        document.querySelector('textArea[name="operandoActual"]').value = this.operandoActual;
+    }
     procesarTeclas(evento) {
         super.procesarTeclas(evento);
         var keyPressed = evento.key;
@@ -476,12 +458,132 @@ class CalculadoraEspecializada extends CalculadoraRPN {
             case "d":
                 this.convertirADecimal();
                 break;
+            case "A":
+                this.escribeLetra("A");
+                break;
+            case "B":
+                this.escribeLetra("B");
+                break;
+            case "Z":
+                this.escribeLetra("Z");
+                break;
+            case "D":
+                this.escribeLetra("D");
+                break;
+            case "E":
+                this.escribeLetra("E");
+                break;
+            case "F":
+                this.escribeLetra("F");
+                break;
             case "h":
                 this.convertirAHexadecimal();
                 break;
-            
+
         }
 
+    }
+    enter(){
+        if(this.baseActual==HEXA){
+            this.pilaOperandos.push(this.operandoActual)
+            this.actualizarPila();
+            this.operandoActual = VACIO;
+             document.querySelector('textArea[name="operandoActual"]').value = VACIO;
+        }else{
+            super.enter();
+        }
+        
+    }
+
+    #restringirTeclas() {
+        var pre = 'input[name="';
+
+        switch (this.baseActual) {
+            case BINARIA:
+
+                for (let i = 0; i < 10; i++) {
+                    var selector = pre + i + '"]'
+                    document.querySelector(selector).disabled = true;
+                }
+
+                document.querySelector('input[name="0"]').disabled = false;
+                document.querySelector('input[name="1"]').disabled = false;
+                document.querySelector('input[name="dec"]').disabled = false;
+                document.querySelector('input[name="hex"]').disabled = false;
+                this.#disableLetras(true)
+                this.#disableOperaciones(true);
+                break;
+            case OCTAL:
+
+                //habilitamos los números del 0 al 7 y los botones de cambio de base y borrado.
+
+                for (let i = 0; i < 8; i++) {
+                    var selector = pre + i + '"]'
+                    document.querySelector(selector).disabled = false;
+                }
+
+
+                document.querySelector('input[name="dec"]').disabled = false;
+                document.querySelector('input[name="bin"]').disabled = false;
+                document.querySelector('input[name="hex"]').disabled = false;
+                document.querySelector('input[name="enter"]').disabled = false;
+                this.#disableLetras(true)
+                this.#disableOperaciones(true);
+                break;
+            case DECIMAL:
+                for (let i = 0; i < 10; i++) {
+                    var selector = pre + i + '"]'
+                    document.querySelector(selector).disabled = false;
+                }
+                document.querySelector('input[type="button"]').disabled = false;
+                this.#disableLetras(true)
+                this.#disableOperaciones(false);
+                break;
+            case HEXA:
+                document.querySelector('input[type="button"]').disabled = true;
+                //habilitamos los números del 0 al 9 y los botones de cambio de base y borrado.
+                for (let i = 0; i < 10; i++) {
+                    var selector = pre + i + '"]'
+                    document.querySelector(selector).disabled = false;
+                }
+                this.#disableOperaciones(true);
+                document.querySelector('input[name="dec"]').disabled = false;
+                document.querySelector('input[name="bin"]').disabled = false;
+                document.querySelector('input[name="oct"]').disabled = false;
+                this.#disableLetras(false)
+
+                break;
+        }
+        document.querySelector('input[name="enter"]').disabled = false;
+        document.querySelector('input[name="ce"]').disabled = false;
+        document.querySelector('input[name="c"]').disabled = false;
+    }
+    #disableOperaciones(estado) {
+        document.querySelector('input[name="cuadrado"]').disabled = estado;
+        document.querySelector('input[name="potencia"]').disabled = estado;
+        document.querySelector('input[name="sin"]').disabled = estado;
+        document.querySelector('input[name="cos"]').disabled = estado;
+        document.querySelector('input[name="tan"]').disabled = estado;
+        document.querySelector('input[name="sqrt"]').disabled = estado;
+        document.querySelector('input[name="baseDiez"]').disabled = estado;
+        document.querySelector('input[name="log"]').disabled = estado;
+        document.querySelector('input[name="suma"]').disabled = estado;
+        document.querySelector('input[name="resta"]').disabled = estado;
+        document.querySelector('input[name="multiplicacion"]').disabled = estado;
+        document.querySelector('input[name="sqrt"]').disabled = estado;
+        document.querySelector('input[name="division"]').disabled = estado;
+        document.querySelector('input[name="pi"]').disabled = estado
+        document.querySelector('input[name="mod"]').disabled = estado
+        document.querySelector('input[name=","]').disabled = estado
+
+    }
+    #disableLetras(estado) {
+        document.querySelector('input[name="A"]').disabled = estado;
+        document.querySelector('input[name="B"]').disabled = estado;
+        document.querySelector('input[name="C"]').disabled = estado;
+        document.querySelector('input[name="D"]').disabled = estado;
+        document.querySelector('input[name="E"]').disabled = estado;
+        document.querySelector('input[name="F"]').disabled = estado;
     }
 }
 var calculadoraEspecial = new CalculadoraEspecializada();

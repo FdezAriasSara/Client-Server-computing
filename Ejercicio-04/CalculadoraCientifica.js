@@ -268,6 +268,8 @@ class CalculadoraCientifica extends CalculadoraBasica {
         super()
         this.shiftIsPressed = false;
         this.fixedExponent = false;
+        this.hyp=false;
+        this.deg=false;
     }
     /**
      * En memoria empleo 0 , ya que es el elemento neutro de las operaciones que sealizan con ella por defecto.
@@ -277,8 +279,17 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.#shiftBotonesMemoria();
 
     }
+    hiperbolica(){
+        this.hyp=!this.hyp;
+    }
     fe() {
         this.fixedExponent = !this.fixedExponent;
+    }
+    grados(){
+        this.deg=!this.deg;
+        var currentValue;
+        this.deg? currentValue="RAD" : currentValue="DEG";
+        document.querySelector("input[name='deg']").value=currentValue;
     }
     /*
      * Este método recibe el resultado de una operación y lo guarda en memoria y en el operando1. 
@@ -385,7 +396,13 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
         this.asignarOperandoUnarias();
+        if(this.hyp){
+            this.shiftIsPressed ? this.resultado = Math.asinh(this.operando1) : this.resultado = Math.sinh(this.operando1);
+        }
         this.shiftIsPressed ? this.resultado = Math.asin(this.operando1) : this.resultado = Math.sin(this.operando1);
+        if(this.deg){
+            this.resultado=this.resultado*Number(180)/Number(4)
+        }
         this.procesarResultado();
 
     }
@@ -422,14 +439,29 @@ class CalculadoraCientifica extends CalculadoraBasica {
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
         this.asignarOperandoUnarias();
-        this.shiftIsPressed ? this.resultado = Math.acos(this.operando1) : this.resultado = Math.cos(this.operando1);
+        if(this.hyp){
+            this.shiftIsPressed ? this.resultado = Math.acosh(this.operando1) : this.resultado = Math.cosh(this.operando1);
+
+        }else{
+            this.shiftIsPressed ? this.resultado = Math.acos(this.operando1) : this.resultado = Math.cos(this.operando1);
+        }
+        if(this.deg){
+            this.resultado=this.resultado*Number(180)/Number(4)
+        }
         this.procesarResultado();
     }
     tangente() {
         this.quitarSimboloDecimales(COMA);
         this.ejecutarOperaciónBasica();
         this.asignarOperandoUnarias();
-        this.shiftIsPressed ? this.resultado = Math.atan(this.operando1) : this.resultado = Math.tan(this.operando1);
+        if(this.hyp){
+            this.shiftIsPressed ? this.resultado = Math.atanh(this.operando1) : this.resultado = Math.tanh(this.operando1);
+        }else{
+            this.shiftIsPressed ? this.resultado = Math.atan(this.operando1) : this.resultado = Math.tan(this.operando1);
+        }
+        if(this.deg){
+            this.resultado=this.resultado*Number(180)/Number(4)
+        }
         this.procesarResultado();
     }
     log() {
