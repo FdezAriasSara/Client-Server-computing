@@ -211,7 +211,7 @@ class CalculadoraBasica {
 
         }
         this.actualizarPantalla();
-        this.pantalla = VACIO;;
+        this.pantalla = VACIO;
 
     }
     /**
@@ -253,7 +253,7 @@ class CalculadoraBasica {
     procesarResultado() {
         if (!isNaN(this.resultado)) {
             this.memoria = this.resultado;//devuelve un number
-
+            this.operando1=this.memoria;
             this.pantalla = this.memoria;
         } else {
             this.pantalla = ERROR;
