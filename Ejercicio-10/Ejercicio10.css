@@ -1,0 +1,36 @@
+/**********************
+  Sara Fernández Arias - UO269546
+  En este documento se detallan los aspectos más esteticos de los elementos de la web como pueden ser el tamaño y el color de los mismos.
+
+**********************/
+
+/*Especificidad: 001 **/
+body {
+    font-family: Tahoma, sans-serif;
+    color:#FFFFFF;
+    background-color: #2E2E2E;
+    font-size: 1.5em;
+    }
+/*Especificidad: 001 **/
+main{
+    margin-left: 5vw;
+    margin-right: 2vw;
+}
+
+/*Especificidad: 002 **/
+article>h3{
+    color: #2E2E2E;/*Se produce una advertencia. El color de fondo se hereda de body*/
+}
+
+/*Especificidad: 001**/
+h1,h2,h3,h4,a,footer{
+    color:#FFAD99;
+    /*En la línea anterior ,  se producen cinco advertencias en el validador de css (una por cada selector)
+    en la que se indica que no hay color de fondo. Esto no es así, ya que estos elementos heredarán el color 
+    de fondo del elemento body.*/
+  
+  }
+
+
+
+

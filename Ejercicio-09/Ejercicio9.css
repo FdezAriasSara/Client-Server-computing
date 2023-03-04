@@ -1,0 +1,73 @@
+/**********************
+  Sara Fernández Arias - UO269546
+  En este documento , se detalla la disposición de los diferentes elementos del ejercicio 9
+ 
+  **********************/
+  /**Especificidad: 001 **/
+main{
+
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+
+    
+    
+}
+/*Especificidad 001*/
+h1{
+   
+
+    font-size: 3em;
+ 
+}
+/**Especificidad: 001 **/ 
+section{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    margin:0.7vw;
+    border-style: dotted; 
+  
+  }
+  /**Especificidad: 001 **/ 
+  section,button{
+      padding:1.5vw;
+      font-size:1.4em;
+  }
+
+/**Especificidad: 001 **/ 
+body{
+    text-align:center;
+    background-color: #FFB066;
+    color:#000000;
+
+}
+/**Especificidad 001*/
+img{
+    max-width: 100%;
+    height:auto;
+}
+/**Especificidad: 001 **/
+button{
+    margin:2vh;
+    justify-self: center;
+    grid-column: 2/4;
+    grid-row:3;
+    border:0.5em;
+    border-style: double;
+}
+/**Especificidad: 001 **/
+section, button{
+    background-color: #000000;
+    color:#FF8F33;
+ 
+}
+/**Especificidad: 001 **/
+footer,h1{
+    grid-column: 1/5;
+    justify-self: center;
+}
+/**Especificidad: 001 **/
+footer{
+font-size: 2em;
+}

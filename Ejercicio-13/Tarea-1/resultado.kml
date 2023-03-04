@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8'?>
+ <kml xmlns='http://www.opengis.net/kml/2.2'>
+<Document id='Universidad de Oviedo'>
+<Placemark><name>Oviedo</name>
+<description>Lugar de nacimiento de SaraFernández Arias</description>
+<Point>
+<coordinates>-5.84476,43.36029</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Grao</name>
+<description>Lugar de reesidencia de SaraFernández Arias</description>
+<Point>
+<coordinates>-6.06973,43.3885</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Palencia</name>
+<description>Lugar de nacimiento de LuisPastrana García</description>
+<Point>
+<coordinates>-4.53117,42.0125</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Ciudad Real</name>
+<description>Lugar de reesidencia de LuisPastrana García</description>
+<Point>
+<coordinates>-3.92726, 38.9861</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Suances</name>
+<description>Lugar de nacimiento de IsabelReyes García</description>
+<Point>
+<coordinates>-4.0606700,43.4270700</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Palma de Mallorca</name>
+<description>Lugar de reesidencia de IsabelReyes García</description>
+<Point>
+<coordinates>2.65024, 39.56939</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Valladolid</name>
+<description>Lugar de nacimiento de LuciaPastrana García</description>
+<Point>
+<coordinates>-4.72372,41.65518</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Suances</name>
+<description>Lugar de reesidencia de LuciaPastrana García</description>
+<Point>
+<coordinates>-4.0606700,43.4270700</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Morcín</name>
+<description>Lugar de nacimiento de Pedro LuisPastrana Jiménez</description>
+<Point>
+<coordinates> -5.8931400,43.2637200</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Grao</name>
+<description>Lugar de reesidencia de Pedro LuisPastrana Jiménez</description>
+<Point>
+<coordinates>-6.06973,43.3885</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Palma de Mallorca</name>
+<description>Lugar de nacimiento de GemaArias García</description>
+<Point>
+<coordinates>2.65024, 39.56939</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Valladolid</name>
+<description>Lugar de reesidencia de GemaArias García</description>
+<Point>
+<coordinates>-4.72372,41.65518</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Palencia</name>
+<description>Lugar de nacimiento de Luis Manuel  García Hernández</description>
+<Point>
+<coordinates>-4.53117,42.0125</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Morcín</name>
+<description>Lugar de reesidencia de Luis Manuel  García Hernández</description>
+<Point>
+<coordinates> -5.8931400,43.2637200</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Dos Hermanas</name>
+<description>Lugar de nacimiento de RosaPastrana Lueje</description>
+<Point>
+<coordinates>-5.92088,37.28287</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Murcia</name>
+<description>Lugar de reesidencia de RosaPastrana Lueje</description>
+<Point>
+<coordinates>-1.13004,37.98704</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Murcia</name>
+<description>Lugar de nacimiento de DiegoMartín Fernández</description>
+<Point>
+<coordinates>-1.13004,37.98704</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Dos Hermanas</name>
+<description>Lugar de reesidencia de DiegoMartín Fernández</description>
+<Point>
+<coordinates>-5.92088,37.28287</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Murcia</name>
+<description>Lugar de nacimiento de PedroGonzález Lueje</description>
+<Point>
+<coordinates>-1.13004,37.98704</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Valladolid</name>
+<description>Lugar de reesidencia de PedroGonzález Lueje</description>
+<Point>
+<coordinates>-4.72372,41.65518</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Seul</name>
+<description>Lugar de nacimiento de PalomaCuesta</description>
+<Point>
+<coordinates>126.9784,37.566</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Taiyuan</name>
+<description>Lugar de reesidencia de PalomaCuesta</description>
+<Point>
+<coordinates>112.56028,37.86944</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Taiyuan</name>
+<description>Lugar de nacimiento de JosemiCuesta</description>
+<Point>
+<coordinates>112.56028,37.86944</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Seul</name>
+<description>Lugar de reesidencia de JosemiCuesta</description>
+<Point>
+<coordinates>126.9784,37.566</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Surabaya</name>
+<description>Lugar de nacimiento de EmilioCasares</description>
+<Point>
+<coordinates>112.75083,-7.24917</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+<Placemark><name>Campina Grande</name>
+<description>Lugar de reesidencia de EmilioCasares</description>
+<Point>
+<coordinates>-35.88111,-7.23056</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</Point>
+</Placemark>
+</Document>
+</kml>

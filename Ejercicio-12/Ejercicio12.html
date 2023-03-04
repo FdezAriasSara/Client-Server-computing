@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+
+<head>
+    <!--Metadatos de los documentos HTML5-->
+    <meta name="author" content="Sara Fernández Arias" />
+    <meta name="description" content="Uso de la api de Html5 llamada apifile" />
+    <meta name="keywords" content="js,javascript,apifile,html5" />
+
+    <!--Definición de la ventana gráfica-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Ejercicio 12</title>
+    <!-- añadir el elemento link de enlace a la hoja de estilo dentro del <head> del documento html -->
+
+    <link rel="stylesheet" type="text/css" href="Ejercicio12.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="Ejercicio12.js"></script>
+</head>
+
+<body>
+    <main>
+        <section title="panel">
+            <h2>Uso de apiFile</h2>
+            <label for="proc">Introduce tu archivo</label>
+            <input type="file" id="proc" onchange="apiFile.procesarArchivos()" multiple="">         
+            
+        </section>
+    </main>
+
+</body>
+
+</html>

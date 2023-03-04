@@ -1,0 +1,68 @@
+/**********************
+  Sara Fernández Arias - UO269546
+  En este documento se detallan los aspectos más esteticos de los elementos de la web como pueden ser el tamaño y el color de los mismos.
+
+**********************/
+/*Especificidad: 001 **/
+body {
+    font-family: Tahoma, sans-serif;
+    color:#FFFFFF;
+    background-color: #2E2E2E;
+    font-size: 1.5em;
+    }
+/*Especificidad: 001 **/
+video{
+    border-style: dashed;
+    max-width: 100%;
+    height:auto;
+    /*Incluyo las reglas anteriores para facilitar la adaptabilidad de los videos, ya que estos se ajustarán automáticamente a la pantalla**/
+  
+}
+/**Especificidad 001**/
+input{
+    font-size:1.3em;    
+    
+}
+/**Especificidad 001**/
+label,legend{
+    font-size:1.4em;
+}
+/*Especifidad 001*/
+textarea{
+    width: 30vw;
+    height: 40vh;
+    /*Medidas para garantizar la adaptabilidad del elemento textarea*/
+}
+/**Especificidad 001**/
+fieldset {    
+    border-style: dotted;
+}
+/**Especificidad 001**/
+h2{
+    color:#B8EABC;/*Produce una advetencia, pero heredará su color de fondo de su elemento padre, dependiendo del contexto , main , section o body*/
+}
+/**Especificidad 001**/
+legend,h1,h3{
+    color:#F5D1E4;/*Produce una advetencia, pero heredará su color de fondo de su elemento padre, dependiendo del contexto , main , section o body*/
+    font-style: oblique;
+   
+}
+/**Especificidad 001**/
+form{
+    border-style: double;
+    border-color:#F5D1E4;
+    margin:2vw;
+    padding:4vw;
+}
+/**Especificidad 003**/
+fieldset> p>label{
+    font-size:1.2em;
+}
+/**Especificidad 011**/
+input[type="text"],input[type="email"]{
+    width: 45vw;
+    /* CSS Values and Units Module Level 3, apartado 5.1.2
+    Mediante esta regla especifico que  los elementos
+    input de tipo text y email tengan un ancho equivalente al 45% del ancho del viewport
+    del dispositivo desde el que se visualiza*/
+}

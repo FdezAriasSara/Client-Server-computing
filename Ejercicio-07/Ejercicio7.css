@@ -1,0 +1,127 @@
+/**********************
+  Sara Fernández Arias - UO269546
+  En este documento se detallan los aspectos más esteticos de los elementos de la web como pueden ser el tamaño y el color de los mismos.
+
+**********************/
+
+/*Especificidad: 001 **/
+body {
+    font-family: Tahoma, sans-serif;
+    color:#FFFFFF;
+    background-color: #2E2E2E;
+    font-size: 1.5em;
+    }
+/*Especificidad: 001 **/
+main{
+    margin-left: 5vw;
+    margin-right: 2vw;
+}
+/*Especificidad: 001 **/
+article{
+    background-color: #F5D1E4;
+    color: #2E2E2E;
+}
+/*Especificidad: 002 **/
+article>h3{
+    color: #2E2E2E;  /*Esta regla produce una advertencia en el validador, indicando que no hay color de fondo. Esto no es realmente así,
+    ya que este elemento heredará el color de fondo de <body>*/
+}
+
+/*Especificidad: 001**/
+h1,h2,h3,h4,a,footer,figcaption{
+    color:#F5D1E4;
+    /*En la línea anterior ,  se producen cinco advertencias en el validador de css (una por cada selector)
+    en la que se indica que no hay color de fondo. Esto no es así, ya que estos elementos heredarán el color 
+    de fondo del elemento body.*/
+  
+  }
+/*Especificidad: 001*/
+header {
+    font-size: 2em;
+    text-transform: uppercase; 
+}
+/*Especificidad 001*/
+figcaption,footer,q{
+    font-style: italic;
+}
+
+/*Especificidad 001*/
+pre{  
+   font-family:Times, 'Times New Roman', serif;
+   color:#FCD47E;
+ 
+    /*Esta regla produce una advertencia en el validador, indicando que no hay color de fondo. Esto no es realmente así,
+    ya que este elemento heredará el color de fondo de <body>*/
+
+    width:10vw; /*Facilita la adaptabilidad*/
+}
+/*Especificidad 001*/
+aside{  
+    background-color: #D4D4D4;
+    color: #141414;
+    padding-left:2vw;
+    padding-right:2vw;
+    margin:4vh;  
+    
+}
+/**Especificidad: 001*/
+li{
+    margin:5vw;
+    /*Quiero que el margen entre los elementos de la lista se adapte teniendo en cuenta la altura del viewport.*
+    De esta forma, si el dispositivo es pequeño , los objetos aparecerán mas juntos, y viceversa.*/
+}
+/*Especificidad: 001 **/
+video{
+    max-width: 100%;
+    height:auto;
+    /*Incluyo las reglas anteriores para facilitar la adaptabilidad de los videos, ya que estos se ajustarán automáticamente a la pantalla**/
+    /*La adaptabilidad de la imagen de la web se proporciona por medio del elemento <picture>, en index.html*/
+    
+}
+/*Especificidad: 001 **/
+video,image{
+    border-style: dashed;
+}
+/*Especificidad 002*/
+aside> h3,aside > h4{
+    color:#442744;
+    /*Esta regla produce dos advertencias en el validador (una por cada selector), indicando que no hay color de fondo. Esto no es realmente así,
+    ya que este elemento heredará el color de fondo de <aside>*/
+}
+  
+/*Especificidad 002*/
+header>h2{  
+    /*Quiero que esta regla se aplique a los h2 que sean hijos de <header>, ya que anteriormente hay una regla que establece el color de los h2 en general.*/
+    font-size:0.7em; /*El tamaño del texto de este h2 será calculado relativo al tamaño del <header>*/
+    color:#FFFFFF;
+   /*Esta regla produce una advertencia en el validador , indicando que no hay color de fondo. Esto no es realmente así,
+    ya que este elemento heredará el color de fondo de <header>, que lo heredará a su vez de <body>*/
+}
+
+
+/*Especificidad 002*/
+li>ul{
+    font-size:0.8em;
+}
+/*Especificidad 011*/
+a:hover{
+    color: #F5D1E4;
+    /*Esta regla da lugar a una advertencia, indicando que no hay color de fondo. Esto no es así , ya que:
+      -en caso de ser un <a> contenido en un nav, tendrá el color de fondo heredado del mismo.
+      -en caso de no serlo, heredará el color del elemento <p> que lo contiene, que a su vez lo heredará de <body>*/
+}
+/*Especificidad 011*/
+a:visited{
+    color:#B1ECE6;
+  /*Esta regla da lugar a una advertencia, indicando que no hay color de fondo. Esto no es así , ya que:
+      -en caso de ser un <a> contenido en un nav, tendrá el color de fondo heredado del mismo.
+      -en caso de no serlo, heredará el color del elemento <p> que lo contiene, que a su vez lo heredará de <body>*/
+}
+/*Especificidad 012*/
+nav > a:hover{
+    /*Quiero que esta regla se aplique a los <a> que sean hijos del elemento <nav>**/
+    background-color:#FFFFFF;
+    color: #2E2E2E ;
+}
+  
+  

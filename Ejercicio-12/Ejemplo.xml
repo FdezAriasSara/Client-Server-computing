@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><redSocial xmlns="http://www.uniovi.es/redSocial" xsi:schemaLocation="http://www.uniovi.es/redSocial RedSocial.xsd"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<persona nombre="Sara" apellidos="Fernández Arias">
+	<datos>
+		<fechaNacimiento dia="27" mes="6" año="2000"/>
+		<lugarNacimiento >
+			<localidad>Oviedo</localidad>
+			<coordenadas latitud="43.36029" longitud="-5.84476" altitud="231" />
+		</lugarNacimiento>
+		<lugarResidencia>
+			<localidad>Grao</localidad>
+			<coordenadas latitud="43.3885" longitud="-6.06973" altitud="67"/>
+		</lugarResidencia> 
+		<multimedia>
+			<foto><![CDATA[https://i.pinimg.com/564x/0e/a6/b8/0ea6b8676c8d309c7f804d1dbbb71015.jpg]]></foto>
+			<video ><![CDATA[https://www.youtube.com/watch?v=OG-sGjl9f-A]]></video>
+		</multimedia>
+		<comentarios>
+			<comentario> Su signo del zodiaco es Cáncer. </comentario>
+		</comentarios>
+	</datos>
+	<persona nombre="Luis" apellidos="Pastrana García">
+		<datos>
+			<fechaNacimiento dia="23" mes="9" año="1998"/>
+			<lugarNacimiento>
+				<localidad>Palencia</localidad>
+				<coordenadas latitud="42.0125" longitud="-4.53117" altitud="747"/>
+			</lugarNacimiento>
+			<lugarResidencia>
+				<localidad>Ciudad Real</localidad>
+				<coordenadas latitud=" 38.9861" longitud="-3.92726" altitud="636"/>
+			</lugarResidencia> 
+			<multimedia>
+				<foto><![CDATA[https://i.pinimg.com/564x/ad/4f/65/ad4f65f9cb29f6919299feeec2823e20.jpg]]></foto>
+				<foto><![CDATA[https://i.pinimg.com/564x/2b/24/61/2b24613f65be0d53331cd3f080aca26d.jpg]]></foto>
+			</multimedia>
+			<comentarios>
+				<comentario> Su signo del zodiaco es Leo. </comentario>
+				<comentario> Estudió en la  EII. </comentario>
+			</comentarios>
+		</datos>
+		<persona nombre="Isabel" apellidos="Reyes García">
+			<datos>
+				<fechaNacimiento dia="23" mes="9" año="1998"/>
+				<lugarNacimiento>
+					<localidad>Suances</localidad>
+					<coordenadas  latitud="43.4270700" longitud="-4.0606700" altitud="92"/>
+				</lugarNacimiento> 
+				<lugarResidencia>
+					<localidad>Palma de Mallorca</localidad>
+					<coordenadas  latitud=" 39.56939" longitud="2.65024" altitud="2"/>
+				</lugarResidencia> 
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/564x/93/53/c3/9353c34957fc4d3c16e748eac8ccaa61.jpg]]></foto>
+					<video ><![CDATA[https://www.youtube.com/watch?v=Hr0Wv5DJhuk&list=RDliRu4mhUF7I&index=7&ab_channel=HollywoodRecordsVEVO]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario> Tiene tres perros. </comentario>
+		
+				</comentarios>
+			</datos>
+			
+		</persona>
+		<persona nombre="Lucia" apellidos="Pastrana García">
+			<datos>
+				<fechaNacimiento dia="22" mes="2" año="2008"/>
+				<lugarNacimiento>
+					<localidad>Valladolid</localidad>
+					<coordenadas latitud="41.65518" longitud="-4.72372" altitud="698"/>
+				</lugarNacimiento> 
+				<lugarResidencia>
+					<localidad>Suances</localidad>
+					<coordenadas  latitud="43.4270700" longitud="-4.0606700" altitud="92"/>
+				</lugarResidencia>
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/564x/ff/e6/c6/ffe6c6b2050b86665dc70e2bc8dff552.jpg]]></foto>
+					<video ><![CDATA[https://www.youtube.com/watch?v=2fE4p-E26NQ&list=RDliRu4mhUF7I&index=8&ab_channel=BBCRadio1VEVO]]></video>
+					<video ><![CDATA[https://www.youtube.com/watch?v=Hr0Wv5DJhuk&list=RDliRu4mhUF7I&index=7&ab_channel=HollywoodRecordsVEVO]]></video>
+					<video ><![CDATA[https://www.youtube.com/watch?v=YsXJgrDMKXk&list=RDliRu4mhUF7I&index=5&ab_channel=MileyCyrusVEVO]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario> Estudia Veterinaria.</comentario>
+					
+				</comentarios>
+			</datos>
+			
+		</persona>
+		<persona nombre="Pedro Luis" apellidos="Pastrana Jiménez">
+			<datos>
+				<fechaNacimiento dia="13" mes="10" año="1996"/>
+				<lugarNacimiento>
+					<localidad>Morcín</localidad>
+					<coordenadas latitud="43.2637200" longitud=" -5.8931400" altitud="124"/>
+				</lugarNacimiento> 
+				<lugarResidencia>
+					<localidad>Grao</localidad>
+				<coordenadas latitud="43.3885" longitud="-6.06973" altitud="67"/>
+				</lugarResidencia> 
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/564x/3b/46/8c/3b468c87f0222a833224db1b75e79863.jpg]]></foto>
+					<video ><![CDATA[https://www.youtube.com/watch?v=YsXJgrDMKXk&list=RDliRu4mhUF7I&index=5&ab_channel=MileyCyrusVEVO]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario> Hace surf </comentario>
+					
+				</comentarios>
+			</datos>
+			
+		</persona>
+	</persona>
+	<persona nombre="Gema" apellidos="Arias García">
+		<datos>
+			<fechaNacimiento dia="22" mes="2" año="2008"/>
+			<lugarNacimiento>
+					<localidad>Palma de Mallorca</localidad>
+					<coordenadas  latitud=" 39.56939" longitud="2.65024" altitud="2"/>
+			</lugarNacimiento>  
+			<lugarResidencia>
+					<localidad>Valladolid</localidad>
+					<coordenadas latitud="41.65518" longitud="-4.72372" altitud="698"/>
+			</lugarResidencia>
+			<multimedia>
+				<foto><![CDATA[https://i.pinimg.com/564x/7a/39/37/7a39377bd68cdb97863aee6ab8be27b5.jpg]]></foto>
+				<video ><![CDATA[https://www.youtube.com/watch?v=1VEogQzZ93U&ab_channel=Pie_Flavour1]]></video>
+				<video ><![CDATA[https://www.youtube.com/watch?v=MkR7NC-HNCA]]></video>
+
+			</multimedia>
+			<comentarios>
+				<comentario> Tiene miedo a las mariposas </comentario>
+				
+			</comentarios>
+		</datos>
+		<persona nombre="Luis Manuel" apellidos="  García Hernández">
+			<datos>
+				<fechaNacimiento dia="23" mes="9" año="1998"/>
+				<lugarNacimiento >
+					<localidad>Palencia</localidad>
+					<coordenadas latitud="42.0125" longitud="-4.53117" altitud="747"/>
+				</lugarNacimiento>
+				<lugarResidencia >
+					<localidad>Morcín</localidad>
+					<coordenadas latitud="43.2637200" longitud=" -5.8931400" altitud="124"/>
+				</lugarResidencia>
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/736x/fb/4d/80/fb4d8061a5b7b5135477aca59911c79d.jpg]]></foto>
+					<video ><![CDATA[https://www.youtube.com/watch?v=Hr0Wv5DJhuk&list=RDliRu4mhUF7I&index=7&ab_channel=HollywoodRecordsVEVO]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario> habla inglés </comentario>		
+				</comentarios>
+			</datos>
+			
+		</persona>
+		<persona nombre="Rosa" apellidos="Pastrana Lueje">
+			<datos>
+				<fechaNacimiento dia="23" mes="9" año="1970"/>
+				<lugarNacimiento>
+					<localidad>Dos Hermanas</localidad>
+					<coordenadas latitud="37.28287" longitud="-5.92088" altitud="32" />
+				</lugarNacimiento>  
+				<lugarResidencia>
+					<localidad>Murcia</localidad>
+					<coordenadas latitud="37.98704" longitud="-1.13004"  altitud="73"/>
+				</lugarResidencia>  
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/564x/65/2a/84/652a84b73ecb561d3e6c9360fe3602a4.jpg]]></foto>
+					<video ><![CDATA[https://www.youtube.com/watch?v=2fE4p-E26NQ&list=RDliRu4mhUF7I&index=8&ab_channel=BBCRadio1VEVO]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario>Es más de playa que de montaña</comentario>
+					
+				</comentarios>
+			</datos>
+			
+		</persona>
+		<persona nombre="Diego" apellidos="Martín Fernández">
+			<datos>
+				<fechaNacimiento dia="23" mes="3" año="2001"/>
+				<lugarNacimiento >
+					<localidad>Murcia</localidad>
+					<coordenadas latitud="37.98704" longitud="-1.13004"  altitud="73"/>
+				</lugarNacimiento>
+				<lugarResidencia >
+				<localidad>Dos Hermanas</localidad>
+					<coordenadas latitud="37.28287" longitud="-5.92088" altitud="32" />
+				</lugarResidencia>  
+				
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/564x/1b/6d/94/1b6d9479c34e0c8cb740044fd97ef8f8.jpg]]></foto>
+					<video ><![CDATA[https://www.youtube.com/watch?v=2fE4p-E26NQ&list=RDliRu4mhUF7I&index=8&ab_channel=BBCRadio1VEVO]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario> Está mal de la cabeza.</comentario>
+					
+				</comentarios>
+			</datos>
+			
+		</persona>
+	
+	
+			
+
+	</persona>
+	<persona nombre="Pedro" apellidos="González Lueje">
+		<datos>
+			<fechaNacimiento dia="13" mes="10" año="1996"/>
+			<lugarNacimiento>
+					<localidad>Murcia</localidad>
+					<coordenadas latitud="37.98704" longitud="-1.13004"  altitud="73"/>			
+			</lugarNacimiento>
+			<lugarResidencia >
+					<localidad>Valladolid</localidad>
+					<coordenadas latitud="41.65518" longitud="-4.72372" altitud="698"/>
+			</lugarResidencia>
+			<multimedia>
+				<foto><![CDATA[https://i.pinimg.com/564x/b1/b2/65/b1b265bc46662a2f4784d170c3613621.jpg]]></foto>
+				<video ><![CDATA[https://www.youtube.com/watch?v=YsXJgrDMKXk&list=RDliRu4mhUF7I&index=5&ab_channel=MileyCyrusVEVO]]></video>
+			</multimedia>
+			<comentarios>
+				<comentario> Le gusta dibujar. </comentario>
+				
+			</comentarios>
+		</datos>
+		<persona nombre="Paloma" apellidos="Cuesta">
+			<datos>
+				<fechaNacimiento dia="22" mes="8" año="1956"/>
+				<lugarNacimiento>
+				<localidad>Seul</localidad>
+				<coordenadas latitud="37.566" longitud="126.9784" altitud="64"/>
+				</lugarNacimiento> 
+			<lugarResidencia>
+				
+				<localidad>Taiyuan</localidad>
+				<coordenadas latitud="37.86944" longitud="112.56028" altitud="231"/>
+			
+			</lugarResidencia> 
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/564x/02/2e/7e/022e7e3acd47e88ed95f2e5356502f76.jpg]]></foto>
+					<video ><![CDATA[https://www.youtube.com/watch?v=2fE4p-E26NQ&list=RDliRu4mhUF7I&index=8&ab_channel=BBCRadio1VEVO]]></video>
+					<video ><![CDATA[https://www.youtube.com/watch?v=1VEogQzZ93U&ab_channel=Pie_Flavour1]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario>Tiene una tienda de ropa.</comentario>
+					<comentario>Tiene dos hijos.</comentario>
+					<comentario>Se quedó en coma.</comentario>
+				</comentarios>
+			</datos>
+			
+		</persona>
+		<persona nombre="Josemi" apellidos="Cuesta">
+			<datos>
+				<fechaNacimiento dia="2" mes="4" año="1998"/>
+				<lugarNacimiento>
+					<localidad>Taiyuan</localidad>
+					<coordenadas latitud="37.86944" longitud="112.56028" altitud="231"/>
+				</lugarNacimiento> 
+				<lugarResidencia>
+					<localidad>Seul</localidad>
+				<coordenadas latitud="37.566" longitud="126.9784" altitud="64"/>
+				</lugarResidencia> 
+			
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/564x/ee/70/3a/ee703a6b21ade51bb392ae00a60e63fc.jpg]]></foto>
+					<video ><![CDATA[https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.atresplayer.com%2Fantena3%2Fseries%2Faqui-no-hay-quien-viva%2Fclips%2Fjosemi-ve-muertos-en-aqui-no-hay-quien-viva_5db3271e7ed1a80959f635da%2F&psig=AOvVaw26Pglaq9Ft8r3jIClpz9es&ust=1666969135453000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCIiLtojWgPsCFQAAAAAdAAAAABAE]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario>Suspende todas.</comentario>
+					
+				</comentarios>
+			</datos>
+			
+		</persona>
+		<persona nombre="Emilio" apellidos="Casares">
+			<datos>
+				<fechaNacimiento dia="2" mes="6" año="1974"/>
+				<lugarNacimiento>
+					<localidad>Surabaya</localidad>
+					<coordenadas latitud="-7.24917" longitud="112.75083" altitud="624"/>
+				</lugarNacimiento> 
+				<lugarResidencia>
+					<localidad>Campina Grande</localidad>
+					<coordenadas latitud="-7.23056" longitud="-35.88111" altitud="224"/>
+				</lugarResidencia> 
+				<multimedia>
+					<foto><![CDATA[https://i.pinimg.com/564x/27/36/7e/27367ea57b38fc47435ea21de417e2cc.jpg]]></foto>
+					<foto><![CDATA[https://i.pinimg.com/736x/7c/91/f8/7c91f8906c1ca1f8fb2a8f049c82d9ac.jpg]]></foto>
+					<video ><![CDATA[https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.atresplayer.com%2Fantena3%2Fseries%2Faqui-no-hay-quien-viva%2Fclips%2Fjosemi-ve-muertos-en-aqui-no-hay-quien-viva_5db3271e7ed1a80959f635da%2F&psig=AOvVaw26Pglaq9Ft8r3jIClpz9es&ust=1666969135453000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCIiLtojWgPsCFQAAAAAdAAAAABAE]]></video>
+					<video ><![CDATA[https://www.youtube.com/watch?v=2fE4p-E26NQ&list=RDliRu4mhUF7I&index=8&ab_channel=BBCRadio1VEVO]]></video>
+					<video ><![CDATA[https://www.youtube.com/watch?v=1VEogQzZ93U&ab_channel=Pie_Flavour1]]></video>
+				</multimedia>
+				<comentarios>
+					<comentario>Es conserje.</comentario>
+					<comentario>Le gusta escuchar música.</comentario>
+					
+				</comentarios>
+			</datos>
+			
+		</persona>
+	</persona>
+</persona>
+</redSocial>

@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+
+<head>
+    <!--Metadatos de los documentos HTML5-->
+    <meta name="author" content="Sara Fernández Arias" />
+    <meta name="description" content="Datos obtenidos de la api de red eléctrica" />
+    <meta name="keywords" content="js,javascript,meteo,openweather,weather,tiempo" />
+
+    <!--Definición de la ventana gráfica-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Ejercicio 10</title>
+    <!-- añadir el elemento link de enlace a la hoja de estilo dentro del <head> del documento html -->
+
+    <link rel="stylesheet" type="text/css" href="Ejercicio10.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="Ejercicio10.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Red eléctrica</h1>
+      
+        <section title="demanda">
+            <h2>Demanda</h2>
+            <form name="f-demanda">
+                <!--Se pretende mostrar algo parecido a https://www.ree.es/es/datos/demanda-->
+             
+                <p>
+                    <label for="fechaInicio" >Fecha de inicio:</label>
+                    <input id="fechaInicio" name="start_date" type="date" required />
+                </p>
+                <p>
+                    <label for="fechaFin" >Fecha final:</label>
+                    <input id="fechaFin" name="end_date" type="date" required />
+                </p>
+                <fieldset name="widget" >
+              
+                    <legend>Escoja el widget a mostrar (obligatorio)</legend>
+                    <p><input id="ev" name="evolucion" type="radio" />
+                        <label for="ev">Evolución</label>
+                    </p>
+                    <p><input id="varcomp" name="variacion-componentes" type="radio" />
+                        <label for="varcomp">Variacion de componentes</label>
+                    </p>
+                    <p><input id="igreg" name="ire-general" type="radio" />
+                        <label for="igreg">Índice de red eléctrica GENERAL</label>
+                    </p>
+                    <p><input id="igrega" name="ire-general-anual" type="radio" />
+                        <label for="igrega">Índice de red eléctrica GENERAL (anual)</label>
+                    </p>
+                    <p><input id="igregi" name="ire-general-industria" type="radio" />
+                        <label for="igregi">Índice de red eléctrica en la industria GENERAL</label>
+                    </p>
+                    <p><input id="igregia" name="ire-general-industria-anual" type="radio" />
+                        <label for="igregia">Índice de red eléctrica en la industria GENERAL (anual)</label>
+                    </p>
+                    <p><input id="demH" name="demanda-maxima-horaria" type="radio" />
+                        <label for="demH">Demanda maxima horaria</label>
+                    </p>
+                    <p><input id="demD" name="demanda-maxima-diaria" type="radio" />
+                        <label for="demD">Demanda maxima diaria</label>
+                    </p>
+                    <p><input id="varDem" name="variacion-demanda" type="radio" />
+                        <label for="varDem">Variacion de demanda</label>
+                    </p>
+                    <p><input id="demRT" name="demanda-tiempo-real" type="radio" />
+                        <label for="demRT">Demanda en tiempo real</label>
+                    </p>
+                </fieldset>
+                <fieldset name="time_trunc">
+                    <!--Opcional-->
+                    <legend>¿En qué valor desea visualizar los datos?(Opcional)</legend>
+                    <p><input id="h" name="&time_trunc=hour" type="radio" />
+                        <label for="h">Horas</label>
+                    </p>
+                    <p><input id="dias" name="&time_trunc=day" type="radio" />
+                        <label for="dias">Dias</label>
+                    </p>
+                    <p><input id="mes" name="&time_trunc=month" type="radio" />
+                        <label for="mes">Mes</label>
+                    </p>
+                    <p><input id="año" name="&time_trunc=year" type="radio" />
+                        <label for="año">Año</label>
+                    </p>
+                </fieldset>
+                <fieldset name="geo_trunc">
+                    <!--Opcional-->
+                    <legend>Escoga una sistema de red eléctrica(Opcional)</legend>
+                    <p><input id="8741" name="&geo_limit=peninsular&geo_id=8741" type="radio" />
+                        <label for="8741">peninsular</label>
+                    </p>
+                    <p><input id="8742" name="&geo_limit=canarias&geo_id=8742" type="radio" />
+                        <label for="8742">canarias</label>
+                    </p>
+                    <p><input id="8743" name="&geo_limit=baleares&geo_id=8743" type="radio" />
+                        <label for="8743">Baleares</label>
+                    </p>
+                    <p><input id="8744" name="&geo_limit=ceuta&geo_id=8744" type="radio" />
+                        <label for="8744">Ceuta</label>
+                    </p>
+                    <p><input id="8745" name="&geo_limit=melilla&geo_id=8745" type="radio" />
+                        <label for="8745">Melilla</label>
+                    </p>
+                    <p><input id="4" name="&geo_limit=ccaa&geo_ids=4" type="radio" />
+                        <label for="4">Andalucía</label>
+                    </p>
+                    <p><input id="5" name="&geo_limit=ccaa&geo_ids=5" type="radio" />
+                        <label for="5">Aragón</label>
+                    </p>
+                    <p><input id="6" name="&geo_limit=ccaa&geo_ids=6" type="radio" />
+                        <label for="6">Cantabria</label>
+                    </p>
+                    <p><input id="7" name="&geo_limit=ccaa&geo_ids=7" type="radio" />
+                        <label for="7">Castilla la Mancha</label>
+                    </p>
+                    <p><input id="8" name="&geo_limit=ccaa&geo_ids=8" type="radio" />
+                        <label for="8">Castilla y León</label>
+                    </p>
+                    <p><input id="9" name="&geo_limit=ccaa&geo_ids=9" type="radio" />
+                        <label for="9">Cataluña</label>
+                    </p>
+                    <p><input id="10" name="&geo_limit=ccaa&geo_ids=10" type="radio" />
+                        <label for="10">País Vasco</label>
+                    </p>
+                    <p><input id="11" name="&geo_limit=ccaa&geo_ids=11" type="radio" />
+                        <label for="11">Principado de Asturias</label>
+                    </p>
+                    <p><input id="13" name="&geo_limit=ccaa&geo_ids=13" type="radio" />
+                        <label for="13">Comunidad de Madrid</label>
+                    </p>
+                    <p><input id="14" name="&geo_limit=ccaa&geo_ids=14" type="radio" />
+                        <label for="14">Comunidad de Navarra</label>
+                    </p>
+                    <p><input id="15" name="&geo_limit=ccaa&geo_ids=15" type="radio" />
+                        <label for="15">Comunidad Valenciana</label>
+                    </p>
+                    <p><input id="16" name="&geo_limit=ccaa&geo_ids=16" type="radio" />
+                        <label for="16">Extremadura</label>
+                    </p>
+                    <p><input id="17" name="&geo_limit=ccaa&geo_ids=17" type="radio" />
+                        <label for="17">Galicia</label>
+                    </p>
+                    <p><input id="20" name="&geo_limit=ccaa&geo_ids=20" type="radio" />
+                        <label for="20">La Rioja</label>
+                    </p>
+                    <p><input id="21" name="&geo_limit=ccaa&geo_ids=21" type="radio" />
+                        <label for="21">Región de Murcia</label>
+                    </p>
+                </fieldset>
+                <input type="button" value="Enviar" onClick="redElectrica.realizarConsulta()" name="enviar">
+            </form>
+        </section>
+        <section title="resultados">
+          <h2>Los resultados</h2>
+        </section>
+    </main>
+    <footer>Hecho por Sara Fernández Arias</footer>
+
+</body>
+
+</html>

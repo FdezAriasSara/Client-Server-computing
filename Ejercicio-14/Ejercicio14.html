@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+
+<head>
+    <!--Metadatos de los documentos HTML5-->
+    <meta name="author" content="Sara Fernández Arias" />
+    <meta name="description" content="App web para añadir tracks a un archivo multimedia" />
+    <meta name="keywords" content="js,javascript,html5,api,audio,video,track,subtitle" />
+
+    <!--Definición de la ventana gráfica-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Ejercicio 14</title>
+    <!-- añadir el elemento link de enlace a la hoja de estilo dentro del <head> del documento html -->
+
+    <link rel="stylesheet" type="text/css" href="Ejercicio14.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="Ejercicio14.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>¡Añade subtítulos a tus vídeos!</h1>
+        <h2>Por un contenido más accesible</h2>
+    </header>
+    <main>
+        <h2>¿Qué hace esta aplicación?</h2>
+        <p>Esta aplicación ,genera los trozos de código html para que tus videos tengan tracks. </p>
+
+        <p>El primer paso es facilitar los archivos de video y los tracks que quieras añadirles. Puedes hacerlo de
+            dos formas:
+            Mediante drag&drop del texto directamente o mediante carga desde tu explorador.
+        </p>
+        <section>
+            <h2>Carga tu video o audio</h2>
+            <p>Debe estar en la misma carpeta que el código fuente del ejercicio para poder visualizado desde html.</p>
+            <label for="añadevideo">Introduce tu archivo</label>
+            <input id="añadevideo" type="file" onchange="e14.procesarArchivosVideo()" multiple="">
+        </section>
+        <section>
+            <h2>Carga tus tracks</h2>
+            <h3>Drag&drop</h3>
+            <form name="trackDndD">
+                <label for="contenido_track">Contenido del track</label>
+                <textarea id="contenido_track" ondragenter="e14.dragEnterHandler(event)"
+                    ondragover="e14.dragOverHandler(event)" ondrop="e14.dropHandler(event)" >
+                Arrastra aquí el contenido de tu track.
+            </textarea>
+                <fieldset name="fs-tipo" >
+                    <legend>Tipo de track</legend>
+                    <p><input id="sub" name="subtitles" type="radio" />
+                        <label for="sub">Subtítulos</label>
+                    </p>
+                    <p><input id="caps" name="captions" type="radio" />
+                        <label for="caps">Desripciones</label>
+                    </p>
+                    <p><input id="met" name="metadatos" type="radio" />
+                        <label for="met">Metadatos</label>
+                    </p>
+                </fieldset>
+                <fieldset name="fs-idioma" >
+                    <legend>Idioma</legend>
+                    <p><input id="en" name="en" type="radio" />
+                        <label for="en">Inglés</label>
+                    </p>
+                    <p><input id="es" name="es" type="radio" />
+                        <label for="es">Español</label>
+                    </p>
+                    <p><input id="fr" name="fr" type="radio" />
+                        <label for="fr">Frances</label>
+                    </p>
+                    <p><input id="it" name="it" type="radio" />
+                        <label for="it">Italiano</label>
+                    </p>
+                    <p><input id="no" name="no" type="radio" />
+                        <label for="no">Noruego</label>
+                    </p>
+                </fieldset>
+                <p> <label for="nombre_archivo">Nombre del archivo</label>
+
+                    <input id="nombre_archivo" name="nombre_archivo" type="text"
+                        placeholder="Escribe el nombre del archivo" required />
+                </p>
+                <label for="añadeTrack">Introduce tu archivo</label>
+                <input id="añadeTrack" type="button" value=" Añadir track" onClick="e14.añadirTrack()" name="enviar">
+            </form>
+            <h3>Cargando un archivo desde tu explorador de archivos</h3>
+            <label for="procesa">Introduce tu archivo</label>
+            <input id="procesa" type="file" onchange="e14. procesarArchivosTrack()" name="subidaDirecta" multiple="">
+            <p>Se mostrarán sus propiedades en la siguiente área de texto</p>
+            <label id="contenido" for="procesa">Introduce tu archivo</label>
+            <textarea id="contenido" name="contenido" readonly>
+
+            </textarea>
+
+        </section>
+        <section title="videos">
+            <h3>Tus videos, accesibles</h3>
+            <p>Aquí se mostrarán los elementos video generados con sus respecitvos tracks.</p>
+            <video controls="" preload="auto">
+               <!--Mi intención hubiera sido crear esto de forma dinámica-->
+                <source src="programando.mp4" type="video/.mp4">
+                <track kind="subtitles" src="subtitulos-en.vtt" srclang="en" />
+                <track kind="metadata" src="metadatos.vtt" srclang="no" label="Key Stage 1" />
+            </video>
+        </section>
+        <section title="resumen">
+            <h3>Resumen</h3>
+
+            <p>Aquí se mostrará un pequeño resumen de los track añadidos</p>
+            <button onclick="e14.añadirTracks()">Mostrar </button>
+        </section>
+
+
+
+
+    </main>
+    <footer>Hecho por Sara Fernández Arias</footer>
+
+</body>
+
+</html>

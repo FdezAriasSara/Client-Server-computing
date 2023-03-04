@@ -1,0 +1,46 @@
+/**********************
+  Sara Fernández Arias - UO269546
+  En este documento , se detalla la disposición de los diferentes elementos del ejercicio 13
+ 
+  **********************/
+  /**Especificidad: 001 **/
+  main{
+
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    
+    
+}
+/*Especificidad 001*/
+h1{
+   
+    grid-row: 1;
+    font-size: 3em;
+ 
+}
+
+/**Especificidad: 001 **/ 
+body{
+    text-align:center;   
+    background-color: #073C15;
+    color:#FFFFFF;
+}
+/**Especificidad: 011 **/
+section[title="mapa-dinamico"]{
+   border-style: groove;
+   grid-column:2/5;
+   height: 50vh;
+   width: 70vw;
+   margin:0.7vw;
+  
+}
+
+/**Especificidad: 001 **/
+footer,h1{
+    grid-column: 2/5;
+    justify-self: center;
+}
+/**Especificidad: 001 **/
+footer{
+    font-size: 2em;
+}

@@ -1,0 +1,50 @@
+/**********************
+  Sara Fernández Arias - UO269546
+  En este documento , se detalla la disposición de los diferentes elementos del ejercicio 12
+ 
+  **********************/
+
+/**Especificidad: 001 **/
+main{
+    background-color: #0A0A0A;
+   color:#C3E7F9;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);  
+    
+}
+ /**Especificidad: 001 **/
+ p{ 
+  font-size: 1.3em;
+  }
+ /**Especificidad: 001 **/
+ h3{ 
+  color:#E0D6FF;
+  }
+
+  /**Especificidad: 001 **/
+pre{ 
+  font-size: 1.5em;
+  overflow: auto;
+}
+/**Especificidad: 001 **/
+ pre,code{
+    white-space:pre-wrap;
+ }
+/**Especificidad: 001 **/
+h2{
+  font-size: 4em;
+}
+/**Especificidad: 001 **/
+section{
+  margin:2vw;
+}
+/**Especificidad: 011 **/
+section[title="panel"]{
+    grid-row: 1;
+    grid-column: 1/4;
+    justify-self: center;
+
+}
+
+
+

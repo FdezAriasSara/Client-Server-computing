@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+
+<head>
+    <!--Metadatos de los documentos HTML5-->
+    <meta name="author" content="Sara Fernández Arias" />
+    <meta name="description" content="Ejercicio de modificación de apariencia y estructura del dom usando JQUERY" />
+    <meta name="keywords" content="jquery,magia,paranormal,asturias,españa,ovni" />
+
+    <!--Definición de la ventana gráfica-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Ejercicio 7</title>
+    <!-- añadir el elemento link de enlace a la hoja de estilo dentro del <head> del documento html -->
+
+    <link rel="stylesheet" type="text/css" href="Ejercicio7.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="Ejercicio7.js"></script>
+</head>
+
+<body>
+
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+        <h1>Misterio en España</h1>
+        <h2>Historias con un encanto oscuro</h2>
+    </header>
+    <main>
+        <section>
+            <h3>Opciones disponibles: Tareas 1 y 2</h3>
+            <button onclick=" e7.ocultarElemento('h2')">Ocultar h2</button>
+            <button onclick=" e7.ocultarElemento('section')">Ocultar Secciones</button>
+            <button onclick=" e7.ocultarElemento('picture')">Ocultar imágenes</button>
+            <button onclick=" e7.mostrarElemento('h2')">Mostrar h2</button>
+            <button onclick=" e7.mostrarElemento('section')">Mostrar Secciones</button>
+            <button onclick=" e7.mostrarElemento('picture')">Mostrar imágenes</button>
+            <h3>Opciones disponibles: Tareas 3 y 4</h3>
+            <button onclick=" e7.añadirAudio()">Podcast</button>
+            <button onclick=" e7.añadirArticulo()">Noticias paranormales</button>
+            <button onclick=" e7.añadirAside()">Glosario</button>
+            <button onclick=" e7.borrarElemento('aside')">Quitar Glosario</button>
+            <button onclick=" e7.borrarElemento('article')">Quitar artículo</button>
+        </section>
+
+
+        <section>
+            <h3>Mengollo, el pueblo fantasma</h3>
+
+            <p>Sin duda, el lugar más estremecedor de la geografía asturiana es Mengollo, en Quirós Fue una aldea que,
+                simplemente, dejó de existir porque todos sus habitantes murieron de golpe,
+                convirtiendo el lugar en un pueblo fantasma.</p>
+            <!--Aquí se insertará el audio-->
+            <h4>La leyenda del pueblo</h4>
+            <p>Sucedió en 1854, cuando un terrible temporal de nieve aisló la aldea por tres meses. En abril, cuando por
+                fin los senderos volvieron a estar transitables, el párroco del pueblo cercano de Casares se encaminó a
+                Mengollo para dar misa a sus olvidados feligreses de la aldea. Sin embargo, cuando llegó no encontró
+                ningún resto de vida en el pueblo: ya desde lejos, se percató del impresionante silencio que reinaba en
+                el lugar.</p>
+            <picture>
+
+                <!--Se mostrará esta imagen para todas pantallas menores a 500 px (ancho)-->
+                <source media="(max-width:499px)" srcset="vecinos-asturianos.jpg">
+                <!--Se mostrará esta imagen para todas pantallas mayores que 500 px (ancho)-->
+                <source media="(min-width:1732px)" srcset="pueblo.jpg">
+
+                <img src="vecinos-asturianos.jpg" alt="Imagen del interior de la villa" />
+            </picture>
+            <p>A medida que recorría las callejas, su espanto iba en aumento: toda la población estaba muerta y muchos
+                cadáveres aparecían tirados por la calle. Incluso habían muerto muchos animales domésticos y la mayor
+                parte del ganado.</p>
+            <h4>¿Qué sucedió en mengollo?</h4>
+            <p> Imposible saberlo. Lo único cierto es que los habitantes de Mengollo acabaron en una fosa común y el
+                lugar se abandonó para siempre. Hoy, apenas unas ruinas recuerdan que allí, hace siglo y medio, varias
+                decenas de personas sufrieron una muerte horrible e inexplicada.</p>
+
+        </section>
+        <section>
+            <h3>Estadísticas visionado de OVNIS</h3>
+            <table>
+                <caption>Avistamientos de OVNIs en los últimos 10 años</caption>
+                <tr>
+                    <th scope="col" id="lugar">Lugar</th>
+                    <th scope="col" id="esp">Espectadores</th>
+                    <th scope="col" id="año">Año</th>
+                    <th scope="col" id="expediente">Número de expediente</th>
+                   
+                </tr>
+                <tr>
+                    <th scope="row" id="gjn" headers="lugar">Gijón</th>
+                    <td headers="gjn esp">23</td>
+                    <td headers="gjn año">1969</td>
+                    <td headers="gjn expediente">690626</td>
+                
+                </tr>
+
+                <tr>
+                    <th scope="row" id="ib4" headers="lugar">Vuelo IB-435</th>
+                    <td headers="ib4 esp">  100</td>
+                    <td headers="ib4 año">  1969</td>
+                    <td headers="ib4 expediente">690225</td>
+                </tr>
+                <tr>
+                    <th scope="row" id="sab" headers="lugar">Sabadell</th>
+                    <td headers="sab esp">  2</td>
+                    <td headers="sab año">  1978</td>
+                    <td headers="sab expediente">780704</td>
+                </tr>
+                <tr>
+                    <th scope="row" id="zag" headers="lugar">Zaragoza</th>
+                    <td headers="zag esp"> 50</td>
+                    <td headers="zag año"> 1980</td>
+                    <td headers="zag expediente"> 800329 </td>
+                    
+                </tr>
+
+
+
+            </table>
+
+
+            <button onclick=" e7.sumaFilas()">Suma filas y columnas</button>
+
+
+
+        </section>
+    <section title="listaDOM">
+        <h2>Elementos y sus relaciones</h2>
+        <button onclick=" e7.recorrerDOM()">Recorrer DOM</button>
+    </section>
+    </main>
+    <!--Aquí se insertará el aside-->
+    <!-- la carpeta de recursos gráficos "images" debe estar en el misma carpeta del archivo -->
+    <!-- anadir la sección footer DENTRO del body despues del párrafo -->
+    <footer>
+        <p>Hecho por Sara Fernández Arias.</p>
+
+    </footer>
+</body>
+
+</html>
